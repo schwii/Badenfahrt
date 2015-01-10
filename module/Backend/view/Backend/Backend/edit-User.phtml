@@ -1,0 +1,32 @@
+<?php
+include_once 'editUserView.php';
+$userId = $_GET["user"];
+$user = $em->find('Backend\Entity\User', $userId);
+
+
+$view = new editUserView($em);
+
+switch ($_SERVER['REQUEST_METHOD']) {
+            
+            case 'GET':
+                   $view->assign('Email', $user->getEmail());
+                   $view->assign('ContactLast', $user->getContactLast());
+                   $view->assign('ContactSur', $user->getContactSur());
+                   $view->assign('State', $user->getState());
+                   $view->display();
+            break;
+            
+            case 'POST':
+                $view->assign('userID', $userId);
+                $view->change();
+                break;
+            default:
+                break;
+        }
+
+
+ 
+
+
+
+ 

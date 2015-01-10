@@ -1,0 +1,15 @@
+<?php
+include_once 'adminView.php';
+include_once 'userView.php';
+
+if($this->isAllowed('user','administrateAll')) {
+   $view = new adminView($em);
+   $view->display();
+}
+elseif($this->isAllowed('user','administrateOwn')){
+    $view = new userView($em);
+    $view->display();
+}
+else{
+    echo'<meta http-equiv="refresh" content="0; url=../user/login" />';
+}

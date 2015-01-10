@@ -1,0 +1,81 @@
+<?php
+
+// For PHP <= 5.4, you should replace any ::class references with strings
+// remove the first \ and the ::class part and encase in single quotes
+
+return [
+    'bjyauthorize' => array(
+        'default_role' => 'guest',
+        'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
+        // Using the authentication identity provider, which basically reads the roles from the auth service's identity
+        'identity_provider' => 'BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider',
+        'role_providers' => array(
+            // using an object repository (entity repository) to load all roles into our ACL
+            'BjyAuthorize\Provider\Role\ObjectRepositoryProvider' => array(
+                'object_manager' => 'doctrine.entitymanager.orm_default',
+                'role_entity_class' => 'Backend\Entity\Role',
+            ),
+        ),
+    ),
+    /* Currently, only controller and route guards exist
+     *
+     * Consider enabling either the controller or the route guard depending on your needs.
+     */
+    'guards' => [
+        /* If this guard is specified here (i.e. it is enabled], it will block
+         * access to all controllers and actions unless they are specified here.
+         * You may omit the 'action' index to allow access to the entire controller
+         */
+        \BjyAuthorize\Guard\Controller::class => [
+            ['controller' => 'index', 'action' => 'index', 'roles' => ['guest', 'user']],
+            ['controller' => 'index', 'action' => 'stuff', 'roles' => ['user']],
+            // You can also specify an array of actions or an array of controllers (or both)
+            // allow "guest" and "admin" to access actions "list" and "manage" on these "index",
+            // "static" and "console" controllers
+            [
+                'controller' => ['index', 'static', 'console'],
+                'action' => ['list', 'manage'],
+                'roles' => ['guest', 'admin'],
+            ],
+            [
+                'controller' => ['search', 'administration'],
+                'roles' => ['staffer', 'admin'],
+            ],
+            ['controller' => 'zfcuser', 'roles' => []],
+            // Below is the default index action used by the ZendSkeletonApplication
+            // ['controller' => 'Application\Controller\Index', 'roles' => ['guest', 'user']],
+            ['controller' => 'Backend\Controller\Index', 'roles' => ['user']],
+        ],
+        /* If this guard is specified here (i.e. it is enabled], it will block
+         * access to all routes unless they are specified here.
+         */
+//        \BjyAuthorize\Guard\Route::class => [
+//            ['route' => 'zfcuser', 'roles' => ['user']],
+//            ['route' => 'zfcuser/logout', 'roles' => ['user']],
+//            ['route' => 'zfcuser/login', 'roles' => ['guest']],
+//            ['route' => 'zfcuser/register', 'roles' => ['guest']],
+//            // Below is the default index action used by the ZendSkeletonApplication
+//            ['route' => 'home', 'roles' => ['guest', 'user']],
+//        //-----------------------------------------------
+//        ],
+    ],
+    'resource_providers' => array(
+        'BjyAuthorize\Provider\Resource\Config' => array(
+            'resource123' => array(), //resource user für unten -> https://github.com/bjyoungblood/BjyAuthorize
+        ),
+    ),
+    'rule_providers' => [
+        \BjyAuthorize\Provider\Rule\Config::class => [
+            'allow' => [
+                // allow guests and users (and admins, through inheritance)
+                // the "wear" privilege on the resource "pants"
+                ['admin', 'resource123', 'action123'], //admin-gruppe darf auf resource123 die action123 ausführen
+            ],
+            // Don't mix allow/deny rules if you are using role inheritance.
+            // There are some weird bugs.
+            'deny' => [
+            // ...
+            ],
+        ],
+    ],
+];
