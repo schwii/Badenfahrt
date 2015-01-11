@@ -70,6 +70,16 @@ return array(
                     ),
                 ),
             ),
+            'login' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/user/login',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Pc',
+                        'action' => 'login',
+                    ),
+                ),
+            ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them

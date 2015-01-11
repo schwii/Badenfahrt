@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -12,27 +13,29 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class PcController extends AbstractActionController
-{
-    public function infoAction()
-    {
+class PcController extends AbstractActionController {
+
+    public function infoAction() {
         return new ViewModel();
     }
-        public function historyAction()
-    {
+
+    public function historyAction() {
         return new ViewModel();
     }
-        public function locationAction()
-    {
+
+    public function locationAction() {
         return new ViewModel();
     }
-        public function actualAction()
-    {
+
+    public function actualAction() {
         return new ViewModel();
     }
-            public function generalAction()
-    {
+
+    public function generalAction() {
         return new ViewModel();
+    }
+    public function loginAction() {
+        include_once '../../../view/zfc-user/user/login.phtml';
     }
 
 }
