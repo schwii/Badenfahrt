@@ -71,6 +71,8 @@ return array(
                  array('controller' => 'Backend\Controller\Backend', 'action' => 'stuff', 'roles' => array('admin')),
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'getAllUsers', 'roles' => array('admin')),
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'editUser', 'roles' => array('admin')),
+                array('controller' => 'Backend\Controller\Backend', 'action' => 'changeAvatar', 'roles' => array('user')),
+                array('controller' => 'Backend\Controller\Backend', 'action' => 'upload', 'roles' => array('user')),
                 //array('controller' => 'MyModule\MyEntity\MyEntity', 'roles' => array('admin')),
 
 

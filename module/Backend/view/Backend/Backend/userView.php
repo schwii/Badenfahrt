@@ -9,12 +9,18 @@ class userView{
     }
     
     public function display() {
+
         echo <<<FORM
-        
-        
-        <p>USER</p>
+            
+        <img src="getAvatar.php?id=1" width="175" height="200" />
         
 FORM;
     }
+    
+   
+   
 
 }
+
+
+
