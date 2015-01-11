@@ -37,5 +37,8 @@ class PcController extends AbstractActionController {
     public function loginAction() {
         include_once '../../../view/zfc-user/user/login.phtml';
     }
+        public function registerAction() {
+        include_once '../../../view/zfc-user/user/register.phtml';
+    }
 
 }
