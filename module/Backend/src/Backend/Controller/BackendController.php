@@ -14,6 +14,7 @@ class BackendController extends AbstractActionController
     
     public function indexAction()
     {  
+
              return new ViewModel(array(
                         'em' => $this->getEntityManager(),
          ));

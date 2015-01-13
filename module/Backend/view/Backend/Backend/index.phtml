@@ -7,7 +7,7 @@ if($this->isAllowed('user','administrateAll')) {
    $view->display();
 }
 elseif($this->isAllowed('user','administrateOwn')){
-    $view = new userView($em);
+    $view = new userView($em,$this->zfcUserIdentity());
     $view->display();
 }
 else{
