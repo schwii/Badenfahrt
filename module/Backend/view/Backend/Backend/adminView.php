@@ -12,7 +12,7 @@ class adminView{
 
     public function display() {
         $users = $this->getAllUsersAction();   //Alle User 
-    
+        echo '<img src="getAvatar.php?id=1" width="175" height="200" />';
      // echo '<div class="row">';
        // echo '<div class="col-md-10">';
             echo '<div class="panel panel-default">';  
