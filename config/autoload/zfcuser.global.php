@@ -1,13 +1,13 @@
 <?php
+
 /**
  * ZfcUser Configuration
  *
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it and change the values as you wish.
  */
-$settings = array(   
-
-   /**
+$settings = array(
+    /**
      * Login Redirect Route
      *
      * Upon successful login the user will be redirected to the entered route
@@ -28,7 +28,6 @@ $settings = array(
      * Accepted values: A valid route name within your application
      */
     'logout_redirect_route' => 'home',
-	
     /**
      * Zend\Db\Adapter\Adapter DI Alias
      *
@@ -65,7 +64,7 @@ $settings = array(
      */
     //'enable_username' => false,
 
-    /**     
+    /**
      * Authentication Adapters
      *
      * Specify the adapters that will be used to try and authenticate the user
@@ -133,7 +132,6 @@ $settings = array(
      * Default value is false.
      */
     'use_registration_form_captcha' => false,
-
     /**
      * Form Captcha Options
      *
@@ -149,44 +147,23 @@ $settings = array(
 //            'timeout'    => 300,
 //        ),
 //    ),
-    
-    
-    
-    
-    
-    
     'form_captcha_options' => array(
-    'class'   => 'image',
-    'options' => array(
-                    'font' => __DIR__.'/../../public/fonts/Vera.ttf',
-                    'imgDir' => __DIR__.'/../../public/img/tmp/',
-                    'imgUrl'=>'/img/tmp/',
-                    'wordLen' => 5,
-                    'fontsize'=>26,
-                    'height'=>60,
-                    'width'=>200,
-                    'dotNoiseLevel' => 50,
-                    'lineNoiseLevel' => 6,
-                    'Messages' => array('badCaptcha' => 'Wrong Antispam-Code'),
+        'class' => 'image',
+        'options' => array(
+            'font' => __DIR__ . '/../../public/fonts/Vera.ttf',
+            'imgDir' => __DIR__ . '/../../public/img/tmp/',
+            'imgUrl' => '/img/tmp/',
+            'wordLen' => 5,
+            'fontsize' => 26,
+            'height' => 60,
+            'width' => 200,
+            'dotNoiseLevel' => 50,
+            'lineNoiseLevel' => 6,
+            'Messages' => array('badCaptcha' => 'Wrong Antispam-Code'),
             'expiration' => 300,
-            'timeout'    => 300,
+            'timeout' => 300,
+        ),
     ),
-),
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     /**
      * Use Redirect Parameter If Present
      *
@@ -197,11 +174,11 @@ $settings = array(
     //'use_redirect_parameter_if_present' => true,
 
     /**
-	 * Sets the view template for the user login widget
-	 *
-	 * Default value: 'zfc-user/user/login.phtml'
+     * Sets the view template for the user login widget
+     *
+     * Default value: 'zfc-user/user/login.phtml'
      * Accepted values: string path to a view script
-	 */
+     */
     //'user_login_widget_view_template' => 'zfc-user/user/login.phtml',
 
     /**
@@ -237,7 +214,6 @@ $settings = array(
      * invalidating existing user accounts. Existing user passwords will be
      * re-hashed automatically on their next successful login.
      */
-
     /**
      * Password Cost
      *
@@ -247,26 +223,19 @@ $settings = array(
      * Accepted values: integer between 4 and 31
      */
     'password_cost' => 14,
-
     /**
      * Enable user state usage
      * 
      * Should user's state be used in the registration/login process?
      */
     'enable_user_state' => true,
-    
     /**
      * Default user state upon registration
      * 
      * What state user should have upon registration?
      * Allowed value type: integer
      */
-<<<<<<< HEAD
-    'default_user_state' => 1,
-=======
     'default_user_state' => 3,
->>>>>>> origin/master
-    
     /**
      * States which are allowing user to login
      * 
@@ -274,20 +243,15 @@ $settings = array(
      * Include null if you want user's with no state to login as well.
      * Allowed value types: null and integer
      */
-<<<<<<< HEAD
-    'allowed_login_states' => array( 1, 2 ),
-=======
-    'allowed_login_states' => array( null, 1,3 ),
->>>>>>> origin/master
-    
-    /**
-     * User table name
-     */
-    //'table_name' => 'user',
-    
-    /**
-     * End of ZfcUser configuration
-     */
+    'allowed_login_states' => array(1, 3),
+        /**
+         * User table name
+         */
+        //'table_name' => 'user',
+
+        /**
+         * End of ZfcUser configuration
+         */
 );
 
 /**
@@ -297,7 +261,7 @@ return array(
     'zfcuser' => $settings,
     'service_manager' => array(
         'aliases' => array(
-            'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Zend\Db\Adapter\Adapter',
+            'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter'] : 'Zend\Db\Adapter\Adapter',
         ),
     ),
 );
