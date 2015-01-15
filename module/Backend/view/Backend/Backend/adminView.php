@@ -24,25 +24,6 @@ class adminView {
         //echo $_POST['deactivate'];
         $users = $this->getAllUsersAction();   //Alle User
 
-        echo '<img src="getAvatar.php?id=1" width="175" height="200" />';
-        // echo '<div class="row">';
-        // echo '<div class="col-md-10">';
-        echo '<div class="panel panel-default">';
-        echo '<div class="panel-heading">';
-        echo '<h3 class="panel-title">User Übersicht</h3>';
-        echo '</div>';
-        echo '<div class="panel-body">';
-        echo '<table class="table">';
-        echo '<tr>';
-        echo '<th>E-Mail</th>';
-        echo '<th>Vorname</th>';
-        echo '<th>Nachname</th>';
-        echo '<th>Editieren</th>';
-        echo '<th>Status</th>';
-        echo '</table>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
         // echo '</div>';  
         // echo '</div>'; 
         // echo '<div class="row">';

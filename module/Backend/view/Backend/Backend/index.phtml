@@ -7,7 +7,7 @@ include_once 'editUserView.php';
      $view = new editUserView();
      $view->editUser($em, $_POST['editUser']);
  }
-  elseif($_POST['changeUser']=='UsErChAnGe'){
+  elseif(!empty($_POST['changeUser']) && $_POST['changeUser']=='UsErChAnGe'){
       echo "blabla ändere";
  }
  else{
