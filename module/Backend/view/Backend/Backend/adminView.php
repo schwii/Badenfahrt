@@ -39,45 +39,6 @@ class adminView {
         echo '<th>Nachname</th>';
         echo '<th>Editieren</th>';
         echo '<th>Status</th>';
-        foreach ($users as $user) {
-            $email = $user->getEmail();
-            $surname = $user->getContactSur();
-            $lastname = $user->getContactLast();
-            $userid = $user->getId();
-            $state = $user->getState();
-            switch ($state) {
-                case 1:
-                    $statetxt = "Noch nicht bestätigt";
-                    break;
-                case 2:
-                    $statetxt = "Aktiv";
-                    break;
-                case 7:
-                    $statetxt = "Deaktiviert";
-                    break;
-                case 9:
-                    $statetxt = "Gelöscht";
-                case 9:
-                    $statetxt = "Deaktiviert";
-                    break;
-                default:
-                    $statetxt = "Error - kein Status";
-            }
-            echo '</tr>';
-            echo "<td>$email</td>";
-            echo "<td>$surname</td>";
-            echo "<td>$lastname</td>";
-            echo "<td><a href='editUser?user=$userid'>Edit</a></td>";
-            echo "<td>$statetxt</td>";
-            if ($state == 1) {
-                echo "<td><a href='deactivateUser?user=$userid'>Deaktivieren</a></td>";
-            } else {
-                echo "<td><a href='activateUser?user=$userid'>Aktivieren</a></td>";
-            }
-
-
-            echo '</tr>';
-        }
         echo '</table>';
         echo '</div>';
         echo '</div>';
