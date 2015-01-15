@@ -57,10 +57,21 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class=" btn btn-xs btn-success"><a href="<?php echo $this->url('Backend') ?>"><?php echo 'TEST' ?></a></li>
-                        <li class="btn btn-xs btn-default"><a href="<?php  echo $this->url('login') ?>"><?php echo 'Login' ?></a></li> 
-                        <li class="btn btn-xs btn-default"><a href="<?php  echo $this->url('register') ?>"><?php echo 'Registrieren' ?></a></li> 
-                        
+                        <!--<li class=" btn btn-xs btn-success"><a href="<?php echo $this->url('Backend') ?>"><?php echo 'TEST' ?></a></li>-->
+                        <?php if (empty($this->zfcUserDisplayName())) { ?>
+                            <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('login') ?>"><?php echo 'Login' ?></a></li> 
+                            <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('register') ?>"><?php echo 'Registrieren' ?></a></li> 
+                        <?php } else {
+                            ?>
+                            <li> <p class="navbar-text"><?php echo 'Hallo ' . $this->zfcUserDisplayName() ?></p>
+
+                            </li>
+
+        <!--<li class="btn btn-xs btn-default"><?php echo $this->zfcUserDisplayName(); ?></li>-->
+                            <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('logout') ?>"><?php echo 'Logout' ?></a></li>
+
+                        <?php } ?>
+
                     </ul> <!--  -->
                 </div><!--/.nav-collapse -->
             </div>

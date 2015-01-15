@@ -75,8 +75,6 @@ return array(
                 'options' => array(
                     'route' => '/user/login',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Pc',
-                        'action' => 'login',
                     ),
                 ),
             ),
@@ -85,8 +83,14 @@ return array(
                 'options' => array(
                     'route' => '/user/register',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Pc',
-                        'action' => 'register',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/user/logout',
+                    'defaults' => array(
                     ),
                 ),
             ),
