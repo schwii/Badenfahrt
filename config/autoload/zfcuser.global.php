@@ -247,7 +247,7 @@ $settings = array(
      * Include null if you want user's with no state to login as well.
      * Allowed value types: null and integer
      */
-    'allowed_login_states' => array( null, 1 ),
+    'allowed_login_states' => array( null, 1,3 ),
     
     /**
      * User table name

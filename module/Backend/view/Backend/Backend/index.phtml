@@ -14,9 +14,15 @@ if($this->isAllowed('user','administrateAll')) {
    $view->display();
 }
 elseif($this->isAllowed('user','administrateOwn')){
+    if($this->zfcUserIdentity()->getState()==1){
     $view = new userView($em,$this->zfcUserIdentity());
     $view->display();
 }
+else{
+    echo "zuerst bestätigen";
+}
+}
+
 else{
     echo'<meta http-equiv="refresh" content="0; url=../user/login" />';
 }
