@@ -52,7 +52,7 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 
-        $user = $em->find('Backend\Entity\User', 1); //user 1! zum testen
+        $user = $em->find('Backend\Entity\User', 2); //user 1! zum testen
         $user->setLogo($_FILES["fileToUpload"]["name"]);
         $em->flush();
         unlink($target_file);

@@ -223,14 +223,14 @@ $settings = array(
      *
      * Accepted values: integer between 4 and 31
      */
-    //'password_cost' => 14,
+    'password_cost' => 14,
 
     /**
      * Enable user state usage
      * 
      * Should user's state be used in the registration/login process?
      */
-    //'enable_user_state' => true,
+    'enable_user_state' => true,
     
     /**
      * Default user state upon registration
@@ -238,7 +238,7 @@ $settings = array(
      * What state user should have upon registration?
      * Allowed value type: integer
      */
-    //'default_user_state' => 1,
+    'default_user_state' => 3,
     
     /**
      * States which are allowing user to login
@@ -247,7 +247,7 @@ $settings = array(
      * Include null if you want user's with no state to login as well.
      * Allowed value types: null and integer
      */
-    //'allowed_login_states' => array( null, 1 ),
+    'allowed_login_states' => array( null, 1 ),
     
     /**
      * User table name

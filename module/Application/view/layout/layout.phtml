@@ -60,7 +60,13 @@
                         <li class=" btn btn-xs btn-success"><a href="<?php echo $this->url('Backend') ?>"><?php echo 'TEST' ?></a></li>
                         <li class="btn btn-xs btn-default"><a href="<?php  echo $this->url('login') ?>"><?php echo 'Login' ?></a></li> 
                         <li class="btn btn-xs btn-default"><a href="<?php  echo $this->url('register') ?>"><?php echo 'Registrieren' ?></a></li> 
-                        
+<?php
+//if($this->identity()){
+// echo "jaa";   
+//}
+//$identity = Zend_Auth::getInstance()->getIdentity();
+
+?>
                     </ul> <!--  -->
                 </div><!--/.nav-collapse -->
             </div>

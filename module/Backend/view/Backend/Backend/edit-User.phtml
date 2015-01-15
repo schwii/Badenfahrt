@@ -1,8 +1,14 @@
 <?php
 include_once 'editUserView.php';
-$userId = $_GET["user"];
-$user = $em->find('Backend\Entity\User', $userId);
 
+//$userId = $_GET["user"];
+
+//auf Admin überprüfen ansonsten eigene UserID
+
+if(!empty($_POST['editUser'])){
+   $userId= $_POST['editUser'];
+}
+$user = $em->find('Backend\Entity\User', $userId);
 
 $view = new editUserView($em);
 

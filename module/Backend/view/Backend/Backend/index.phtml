@@ -1,6 +1,13 @@
 <?php
 include_once 'adminView.php';
 include_once 'userView.php';
+include_once 'editUserView.php';
+
+ if(!empty($_POST['editUser'])){
+     $view = new editUserView();
+     $view->editUser($em, $_POST['editUser']);
+ }
+ else{
 
 if($this->isAllowed('user','administrateAll')) {
    $view = new adminView($em);
@@ -13,3 +20,4 @@ elseif($this->isAllowed('user','administrateOwn')){
 else{
     echo'<meta http-equiv="refresh" content="0; url=../user/login" />';
 }
+ }
