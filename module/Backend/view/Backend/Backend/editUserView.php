@@ -2,9 +2,6 @@
 
 class editUserView{
 
-
-
-
 public function editUser($entityManager, $userID){
     $user = $entityManager->find('Backend\Entity\User', $userID);
     $email = $user->getEmail();
@@ -54,7 +51,7 @@ public function editUser($entityManager, $userID){
                                 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Ändern</button>
+                                <button name="changeUser" value="UsErChAnGe" type="submit" class="btn btn-primary btn-lg">Ändern</button>
                             </div>
                         </div>
                     </fieldset>
