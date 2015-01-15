@@ -71,6 +71,10 @@ return array(
             //array('controller' => 'MyModule\MyEntity\MyEntity', 'roles' => array('admin')),
             // Below is the default index action used by the ZendSkeletonApplication
             // ['controller' => 'Application\Controller\Index', 'roles' => ['guest', 'user']],
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'changeAvatar', 'roles' => array('user')),
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'upload', 'roles' => array('user')),
                 //array('controller' => 'MyModule\MyEntity\MyEntity', 'roles' => array('admin')),
@@ -78,6 +82,10 @@ return array(
 
                 // Below is the default index action used by the ZendSkeletonApplication
                 // ['controller' => 'Application\Controller\Index', 'roles' => ['guest', 'user']],
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
             ],
         /* If this guard is specified here (i.e. it is enabled], it will block
          * access to all routes unless they are specified here.
