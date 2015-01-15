@@ -45,6 +45,8 @@ class adminView {
                     break;
                 case 9:
                     $statetxt = "Gelöscht";
+                case 9:
+                    $statetxt = "Deaktiviert";
                     break;
                 default:
                     $statetxt = "Error - kein Status";
