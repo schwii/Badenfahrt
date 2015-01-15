@@ -55,6 +55,13 @@
                                 <li><a href="<?php echo $this->url('location') ?>"><?php echo 'Informationen Stand' ?></a></li>
                             </ul>
                         </li>
+                        <li><?php if ($this->isAllowed('user', 'administrateAll')) { ?>
+                                <a href="<?php echo $this->url('Backend') ?>"><?php echo 'Administationsbereich' ?></a>     
+                            <?php } elseif ($this->isAllowed('user', 'administrateOwn')) {
+                                ?>
+                                <a href="<?php echo $this->url('Backend') ?>"><?php echo 'Userbereich' ?></a>
+                            <?php } ?>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!--<li class=" btn btn-xs btn-success"><a href="<?php echo $this->url('Backend') ?>"><?php echo 'TEST' ?></a></li>-->
@@ -71,7 +78,7 @@
 // echo "jaa";   
 //}
 //$identity = Zend_Auth::getInstance()->getIdentity();
-?>
+                        ?>
                     </ul> <!--  -->
                 </div><!--/.nav-collapse -->
             </div>
