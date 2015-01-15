@@ -1,16 +1,17 @@
 <?php
+$entityManager;
+class editUserView_old{
+protected $vars = array(); 
 
-class editUserView{
 
+public function __construct($em) {
+    global $entityManager;
+    $entityManager = $em;
+}
 
+public function display(){
 
-
-public function editUser($entityManager, $userID){
-    $user = $entityManager->find('Backend\Entity\User', $userID);
-    $email = $user->getEmail();
-    $contactLast = $user->getContactLast();
-    $contactSur = $user->getContactSur();
-    echo <<<FORM
+echo <<<FORM
  <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -23,19 +24,19 @@ public function editUser($entityManager, $userID){
                             <span class="col-md-1 col-md-offset-2 text-center"></span>
                             <div class="col-md-8">
                           
-                                <input id="email" name="email" type="email" required value=$email class="form-control">
+                                <input id="email" name="email" type="email" required value={$this->vars['Email']} class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="lastname" name="lastname" type="text" required value=$contactLast class="form-control">
+                                <input id="lastname" name="lastname" type="text" required value={$this->vars['ContactLast']} class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="surname" name="surname" type="text" required value=$contactSur class="form-control">
+                                <input id="surname" name="surname" type="text" required value={$this->vars['ContactSur']} class="form-control">
                             </div>
                         </div>
 
@@ -66,15 +67,32 @@ public function editUser($entityManager, $userID){
    
  
 FORM;
+}  
+
+
+public function change(){
+    
+    //Abfragen auf Änderung etc?
+    
+    global $entityManager;
+    $user = $entityManager->find('Backend\Entity\User', $this->vars['userID']);
+    $user->setContactLast($_POST['lastname']);
+    $user->setContactSur($_POST['surname']);
+    $user->setEmail($_POST['email']);
+    if(!$_POST['password']=="" && $_POST['password']==$_POST['passwordrepeat']){
+        $user->setPassword($_POST['password']);
+    }
+    else{
+        "echo pw falsch -> bei phtml abfragen und alte werte übergeben";
+    }    
+    
+    $entityManager->flush();
+    
+    //echo $_POST['email'];
 }
 
-//include_once('vendor\zendframework\zendframework\library\Zend\Crypt\Password\bcrypt.php'); 
-//$bcrypt = new Zend\Crypt\Password\Bcrypt();
-//$bcrypt->setCost(14);
-//echo $bcrypt->create($password);
-
-
-
-
-
+public function assign($key, $value) {
+        $this->vars[$key] = $value;
+    }
+    
 }

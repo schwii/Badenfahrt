@@ -1,15 +1,29 @@
 <?php
 include_once 'adminView.php';
 include_once 'userView.php';
+include_once 'editUserView.php';
+
+ if(!empty($_POST['editUser'])){
+     $view = new editUserView();
+     $view->editUser($em, $_POST['editUser']);
+ }
+ else{
 
 if($this->isAllowed('user','administrateAll')) {
    $view = new adminView($em);
    $view->display();
 }
 elseif($this->isAllowed('user','administrateOwn')){
+    if($this->zfcUserIdentity()->getState()==1){
     $view = new userView($em,$this->zfcUserIdentity());
     $view->display();
 }
 else{
+    echo "zuerst bestätigen";
+}
+}
+
+else{
     echo'<meta http-equiv="refresh" content="0; url=../user/login" />';
 }
+ }
