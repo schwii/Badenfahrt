@@ -5,7 +5,30 @@
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it and change the values as you wish.
  */
-$settings = array(
+$settings = array(   
+
+   /**
+     * Login Redirect Route
+     *
+     * Upon successful login the user will be redirected to the entered route
+     *
+     * Default value: 'zfcuser'
+     * Accepted values: A valid route name within your application or a callback.
+     * If callback used, it will receive the identity as the param
+     *
+     */
+//'login_redirect_route' => 'zfcuser',
+
+    /**
+     * Logout Redirect Route
+     *
+     * Upon logging out the user will be redirected to the enterd route
+     *
+     * Default value: 'zfcuser/login'
+     * Accepted values: A valid route name within your application
+     */
+    'logout_redirect_route' => 'home',
+	
     /**
      * Zend\Db\Adapter\Adapter DI Alias
      *

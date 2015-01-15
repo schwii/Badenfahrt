@@ -20,8 +20,14 @@ private $user;
         $streetNr = $this->user->getStreetNr();
         $zip = $this->user->getZip();
         $city = $this->user->getCity();  
-        
+        $image = $this->user->getLogo();
 
+        echo get_class($image);
+       echo "<img src='data:image/jpeg;base64,<?php echo base64_encode($image); ?>' />" ;
+        
+ 
+        echo "<img src='$image' width='175' height='200' />";
+        
 echo "<div class='panel panel-default'>";
 echo  "<div class='panel-heading'>";
 echo   "<h3 class='panel-title'>Persönliche Informationen</h3>";
