@@ -5,14 +5,15 @@ class userView{
 private $user;
      public function __construct($em, $usr) {
         global $entityManager;
-       //global $user;
+       
+   
         $entityManager = $em;
         $this->user = $usr;
+        
     }
-    
+   
     public function display() {
-//<img src="getAvatar.php?id=1" width="175" height="200" />
-        //global $user;
+
         $orgname = $this->user->getOrgname();
         $surname = $this->user->getContactSur();
         $lastname = $this->user->getContactLast();
@@ -21,33 +22,67 @@ private $user;
         $zip = $this->user->getZip();
         $city = $this->user->getCity();  
         $image = $this->user->getLogo();
+        $email = $this->user->getEmail();
+        $phone = $this->user->getPhone();
+        //$timecreate = $this->user->getTimeCreate()->format("d-m-Y H:i:s");
+       //$timecreate = date("d-m-Y H:i:s", strtotime($this->user->getTimeCreate()));
+       $timecreate = 'hüt';
 
-        echo get_class($image);
-       echo "<img src='data:image/jpeg;base64,<?php echo base64_encode($image); ?>' />" ;
-        
+
+echo <<<FORM
+ <div class="containert">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">    
+   <br>
+<p class=" text-info">Benutzer seit:$timecreate</p>
+      </div>
+        <div class="col-xs-10 col-sm-10 col-md-8 col-lg-10 col-xs-offset-6 col-sm-offset-6 col-md-offset-0 col-lg-offset-0 toppad">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><p>$surname $lastname</p></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-4 col-lg-4 " align="center"> <img alt="Hier k�nnte ihr Logo zu sehen sein" src= $image class="img"> </div>
+                <div class=" col-md-8 col-lg-8 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Firma,Organisation</td>
+                        <td>$orgname</td>
+                      </tr>
+                       <tr>
+                        <td>Strasse</td>
+                        <td>$street $streetNr</td> 
+                      </tr>
+                       <tr>
+                        <td>Ort</td>
+                        <td>$zip $city</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td>$email</a></td>
+                      </tr>
+                      <tr>
+                        <td>Telefon</td>
+                        <td>$phone</td>
+                      </tr>               
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                            
+                            <a href="edit-User.phtml" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                            
+                        </span>
+                    </div>
+   
  
-        echo "<img src='$image' width='175' height='200' />";
-        
-echo "<div class='panel panel-default'>";
-echo  "<div class='panel-heading'>";
-echo   "<h3 class='panel-title'>Persönliche Informationen</h3>";
-echo  "</div>";
-echo  "<div class='panel-body'> "  ;         
-echo  "<p>$orgname</p>";
-echo  "<p>$surname $lastname</p>";
-echo  "<p>$street $streetNr</p>";
-echo  "<p>$zip $city</p>";
+FORM;
 
-
-echo " </div>";
-echo"</div>";
 
     }
-    
-   
-   
-
 }
-
-
 
