@@ -1,0 +1,17 @@
+<?php
+
+if (!empty($_GET['id']) AND ! empty($_GET['code'])) {
+
+    $userId = $_GET['id'];
+    echo $userId;
+
+    $user = find('Backend\Entity\User', $userId);
+
+//    $view = new editUserView($em);
+
+    echo $user->getEmail();
+} else {
+
+    echo '<meta http-equiv = "refresh" content = "0; url=../" />';
+}
+?>

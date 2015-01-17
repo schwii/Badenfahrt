@@ -70,6 +70,16 @@ return array(
                     ),
                 ),
             ),
+            'regconf' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/regconf',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Pc',
+                        'action' => 'regconf',
+                    ),
+                ),
+            ),
             'login' => array(
                 'type' => 'Segment',
                 'options' => array(
@@ -82,14 +92,6 @@ return array(
                 'type' => 'Segment',
                 'options' => array(
                     'route' => '/user/register',
-                    'defaults' => array(
-                    ),
-                ),
-            ),
-            'logout' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route' => '/user/logout',
                     'defaults' => array(
                     ),
                 ),
