@@ -17,20 +17,25 @@ if (!empty($_GET['id']) AND ! empty($_GET['code'])) {
     echo $ergebnis;
     mysql_close($verbindung);
 
+    /**
+     * also eigentlich, wänns dänn wörd go:
+     * abfrage,öbs de user ged
+     *  if ja, checke öb de status uf unathorisiert isch
+     *      wänn nei --> redirect home
+     *      wänn ja --> checke öb de authcode met dem ide db stimmt
+     *              und dänn de status uf 1 setzte
+     *              --> redirect zume: Yuhuh besch erfolgrich registiert fäld...
+     *  else
+     *  redirect --> home
+     * 
+     * 
+     */
 //    $view = new editUserView($em);
 //    echo $user->getEmail();
 } else {
 
     echo '<meta http-equiv = "refresh" content = "0; url=../" />';
 }
-
-
-
-//          'host'     => 'localhost',
-//          'port'     => '3306',
-//          'user'     => 'badenfahrer',
-//          'password' => '1234',
-//          'dbname'   => 'db_badenfahrt',
 ?>
 
 
