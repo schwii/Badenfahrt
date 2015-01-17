@@ -1,17 +1,37 @@
 <?php
 
+$verbindung = mysql_connect("localhost", "badenfahrer", "1234")
+        or die("keine Verbindung möglich Benutzername oder Passwort sind falsch");
+
+mysql_select_db("db_badenfahrt")
+        or die("Die Datenbank existiert nicht.");
+
 if (!empty($_GET['id']) AND ! empty($_GET['code'])) {
 
-    $userId = $_GET['id'];
-    echo $userId;
+    $id = $_GET['id'];
 
-    $user = find('Backend\Entity\User', $userId);
+    $abfrage = "SELECT email FROM user WHERE id LIKE " . $id;
+    $ergebnis = mysql_query($abfrage);
+
+
+    echo $ergebnis;
+    mysql_close($verbindung);
 
 //    $view = new editUserView($em);
-
-    echo $user->getEmail();
+//    echo $user->getEmail();
 } else {
 
     echo '<meta http-equiv = "refresh" content = "0; url=../" />';
 }
+
+
+
+//          'host'     => 'localhost',
+//          'port'     => '3306',
+//          'user'     => 'badenfahrer',
+//          'password' => '1234',
+//          'dbname'   => 'db_badenfahrt',
 ?>
+
+
+

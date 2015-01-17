@@ -70,16 +70,6 @@ return array(
                     ),
                 ),
             ),
-            'regconf' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route' => '/regconf',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Pc',
-                        'action' => 'regconf',
-                    ),
-                ),
-            ),
             'login' => array(
                 'type' => 'Segment',
                 'options' => array(
