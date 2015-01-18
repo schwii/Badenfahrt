@@ -3,6 +3,7 @@
 class editUserView{
 
 public function editUser($entityManager, $userID){
+    
     $user = $entityManager->find('Backend\Entity\User', $userID);
     $email = $user->getEmail();
     $contactLast = $user->getContactLast();
@@ -64,6 +65,7 @@ public function editUser($entityManager, $userID){
  
 FORM;
 }
+
 
 //include_once('vendor\zendframework\zendframework\library\Zend\Crypt\Password\bcrypt.php'); 
 //$bcrypt = new Zend\Crypt\Password\Bcrypt();

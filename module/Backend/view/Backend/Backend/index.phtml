@@ -5,7 +5,12 @@ include_once 'editUserView.php';
 
  if(!empty($_POST['editUser'])){
      $view = new editUserView();
-     $view->editUser($em, $_POST['editUser']);
+     if($this->isAllowed('user','administrateAll')) {
+        $view->editUser($em, $_POST['editUser']);    
+     }
+     else{
+         $view->editUser($em, $this->zfcUserIdentity()->getId());
+     }
  }
   elseif(!empty($_POST['changeUser']) && $_POST['changeUser']=='UsErChAnGe'){
       echo "blabla ändere";

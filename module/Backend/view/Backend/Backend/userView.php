@@ -30,6 +30,7 @@ private $user;
 
 
 echo <<<FORM
+       <form class="form-horizontal" method="post">
  <div class="containert">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">    
@@ -73,11 +74,12 @@ echo <<<FORM
               </div>
             </div>
                  <div class="panel-footer">
+                            <button class='btn-xs btn-info' type='submit' value='1' name='editUser'>Ändern <i class="glyphicon glyphicon-edit"></i></button>
                             
-                            <a href="edit-User.phtml" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
                             
                         </span>
                     </div>
+        </form>
    
  
 FORM;
