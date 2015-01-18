@@ -1,0 +1,18 @@
+<?php
+        $doi = $_GET["doi"];
+       
+        $user = $em->getRepository('Backend\Entity\User')->findOneBy(
+                 array('doubleoptin' => $doi));
+        if(isset($user)){
+            
+        if($user->getDoubleoptin()==$doi){
+            $user->setState(1);
+            $em->flush();
+            
+            echo "Danke für Ihre Registration " . $user->getContactSur();
+            echo "<br>Bitte Loggen Sie sich ein: <a href='../user/login'>Login</a>";
+        }
+        else{
+            echo "nix gfunde!";
+        }
+        }

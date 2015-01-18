@@ -40,5 +40,13 @@ class BackendController extends AbstractActionController {
     public function regconfAction() {
         return new ViewModel();
     }
+    
+    public function confirmAction(){
+         return new ViewModel(array(
+            'em' => $this->getEntityManager(),
+        ));
+    }
 
+    //em zoigs über 1 function löse!!
+    
 }
