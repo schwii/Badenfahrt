@@ -32,6 +32,9 @@ class Module
          $user->addRole($defaultUserRole);
          $user->setState(3);  //3=noch nicht double-opt-in
          $user->setTimeCreate(new \DateTime());
+         $user->setDoubleoptin(20); //double-opt-in setzen -> (x) Anzahl Stellen
+         $user->sendConfirmationMail();
+         
 }); 
         
         

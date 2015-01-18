@@ -149,6 +149,11 @@ protected $phone;
 */ 
 protected $notice;    
 
+ /**
+* @ORM\Column(type="string", length=20, nullable=true)
+*/ 
+protected $doubleoptin;   
+
     /**
      * Initialies the roles variable.
      */
@@ -618,5 +623,66 @@ protected $notice;
     public function removeRole(\Backend\Entity\Role $roles)
     {
         $this->roles->removeElement($roles);
+    }
+
+    /**
+     * Set doubleoptin
+     *
+     * @param string $doubleoptin
+     * @return User
+     */
+    public function setDoubleoptin($charcount)
+    {
+        mt_srand((double) microtime() * 1000000); 
+        $set = "ABCDEFGHIKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
+        $doubleoptin = "";
+        
+        for ($i=1;$i<=$charcount;$i++){
+            $doubleoptin .= $set[mt_rand(0,(strlen($set)-1))];
+        }
+
+        $this->doubleoptin = $doubleoptin;
+
+        return $this;
+    }
+
+    /**
+     * Get doubleoptin
+     *
+     * @return string 
+     */
+    public function getDoubleoptin()
+    {
+        return $this->doubleoptin;
+    }
+    
+    
+    public function sendConfirmationMail()
+    {
+        
+        $header  = "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html; charset=iso-8859-1\r\n";
+        $header .= "From: noreply@badenfahrt2017.ch\r\n";
+        //$header .= "Reply-To: noreply@badenfahrt2017.ch\r\n";
+        $header .= "X-Mailer: PHP ". phpversion();
+        $rcpt = $this->getEmail();
+        $subject = "Benutzerportal Badenfahrt 2017 - Bitte bestätigen Sie Ihre E-Mail Adresse";
+        
+        //$body  = file_get_contents('ergend e hmtl vorlag');
+        $link = "http://badenfahrt.local/Backend/confirm.php?doi=" & $this->getDoubleoptin();
+        echo $link;
+        $body = "<html>
+                <head>
+                    <title>Wilkommen bei der Badenfahrt 2017</title>
+                </head>
+                    <p><a href=$link>Klick mir!</a></p>
+                <body>
+  
+                </body>
+                </html>
+                    ";
+        
+        mail( $rcpt, $subject, $body, $header);
+       
     }
 }
