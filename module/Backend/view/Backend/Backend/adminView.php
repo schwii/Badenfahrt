@@ -18,6 +18,11 @@ class adminView {
             $user->setState(1);
             $em->flush();
         }
+        if (!empty($_POST['confirmUser'])) {
+            $user = $em->find('Backend\Entity\User', $_POST['confirmUser']);
+            $user->sendConfirmationMail();
+            //echo "Bestätigungs Mail an"& $user->getEmail() &"versendet";  //müesst no überprüefe ob okay etc.
+        }
     }
 
     public function display() {
@@ -71,6 +76,8 @@ class adminView {
                 echo "<td><button class='btn-xs btn-danger' type='submit' name='deactivateUser' value='$userid'>Deaktivieren</button></td>";
             } else {
                 echo "<td><button class='btn-xs btn-success' type='submit' name='activateUser' value='$userid'>Aktivieren</button></td>";
+                echo "<td><button class='btn-xs btn-success' type='submit' name='confirmUser' value='$userid'>Bestätigungs Mail senden</button></td>";
+                
             }
             echo "<td><button class='btn-xs btn-info' type='submit' name='editUser' value='$userid'>Editieren</button></td>";
 

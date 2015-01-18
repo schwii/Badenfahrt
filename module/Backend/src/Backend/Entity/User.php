@@ -669,8 +669,8 @@ protected $doubleoptin;
         $subject = "Benutzerportal Badenfahrt 2017 - Bitte bestätigen Sie Ihre E-Mail Adresse";
         
         //$body  = file_get_contents('ergend e hmtl vorlag');
-        $link = "http://badenfahrt.local/Backend/confirm.php?doi=" & $this->getDoubleoptin();
-        echo $link;
+        $link = "http://badenfahrt.local/Backend/confirm.php?doi=" . $this->getDoubleoptin();
+
         $body = "<html>
                 <head>
                     <title>Wilkommen bei der Badenfahrt 2017</title>
