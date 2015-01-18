@@ -1,0 +1,42 @@
+<?php
+
+$verbindung = mysql_connect("localhost", "badenfahrer", "1234")
+        or die("keine Verbindung möglich Benutzername oder Passwort sind falsch");
+
+mysql_select_db("db_badenfahrt")
+        or die("Die Datenbank existiert nicht.");
+
+if (!empty($_GET['id']) AND ! empty($_GET['code'])) {
+
+    $id = $_GET['id'];
+
+    $abfrage = "SELECT email FROM user WHERE id LIKE " . $id;
+    $ergebnis = mysql_query($abfrage);
+
+
+    echo $ergebnis;
+    mysql_close($verbindung);
+
+    /**
+     * also eigentlich, wänns dänn wörd go:
+     * abfrage,öbs de user ged
+     *  if ja, checke öb de status uf unathorisiert isch
+     *      wänn nei --> redirect home
+     *      wänn ja --> checke öb de authcode met dem ide db stimmt
+     *              und dänn de status uf 1 setzte
+     *              --> redirect zume: Yuhuh besch erfolgrich registiert fäld...
+     *  else
+     *  redirect --> home
+     * 
+     * 
+     */
+//    $view = new editUserView($em);
+//    echo $user->getEmail();
+} else {
+
+    echo '<meta http-equiv = "refresh" content = "0; url=../" />';
+}
+?>
+
+
+

@@ -34,4 +34,5 @@ class PcController extends AbstractActionController {
     public function generalAction() {
         return new ViewModel();
     }
+
 }
