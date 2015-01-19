@@ -47,6 +47,5 @@ class BackendController extends AbstractActionController {
         ));
     }
 
-    //em zoigs über 1 function löse!!
     
 }

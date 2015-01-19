@@ -74,10 +74,12 @@ echo <<<FORM
               </div>
             </div>
                  <div class="panel-footer">
-                            <button class='btn-xs btn-info' type='submit' value='1' name='editUser'>Ändern <i class="glyphicon glyphicon-edit"></i></button>
-                            
-                            
-                        </span>
+                            <p>Ändern: </p>
+                            <button class='btn-xs btn-info' type='submit' value='1' name='editUser'>Personalien <i class="glyphicon glyphicon-edit"></i></button>
+                            <button class='btn-xs btn-info' type='submit' value='2' name='editUser'>E-Mail <i class="glyphicon glyphicon-envelope"></i></button>
+                            <button class='btn-xs btn-info' type='submit' value='3' name='editUser'>Passwort <i class="glyphicon glyphicon-wrench"></i></button>                  
+   </div>
+   </span>
                     </div>
         </form>
    

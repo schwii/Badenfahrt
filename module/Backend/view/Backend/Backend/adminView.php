@@ -20,6 +20,8 @@ class adminView {
         }
         if (!empty($_POST['confirmUser'])) {
             $user = $em->find('Backend\Entity\User', $_POST['confirmUser']);
+            $user->setDoubleoptin(20); //neuen Key generieren
+            $em->flush();
             $user->sendConfirmationMail();
             //echo "Bestätigungs Mail an"& $user->getEmail() &"versendet";  //müesst no überprüefe ob okay etc.
         }
