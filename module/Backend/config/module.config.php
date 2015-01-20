@@ -23,16 +23,6 @@ return array(
                         'action' => 'index',
                     ),
                 ),
-                'regconf' => array(
-                    'type' => 'Segment',
-                    'options' => array(
-                        'route' => '/Backend/regconf',
-                        'defaults' => array(
-                            'controller' => 'Backend\Controller\Backend',
-                            'action' => 'regconf',
-                        ),
-                    ),
-                ),
             ),
         ),
     ),

@@ -37,15 +37,10 @@ class BackendController extends AbstractActionController {
         return $entityManager;
     }
 
-    public function regconfAction() {
-        return new ViewModel();
-    }
-    
-    public function confirmAction(){
-         return new ViewModel(array(
+    public function confirmAction() {
+        return new ViewModel(array(
             'em' => $this->getEntityManager(),
         ));
     }
 
-    
 }

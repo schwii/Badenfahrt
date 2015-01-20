@@ -64,31 +64,17 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <!--<li class=" btn btn-xs btn-success"><a href="<?php echo $this->url('Backend') ?>"><?php echo 'TEST' ?></a></li>-->
                         <?php if (empty($this->zfcUserDisplayName())) { ?>
                             <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('login') ?>"><i class="glyphicon glyphicon-log-in"></i><?php echo ' Login' ?></a></li> 
                             <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('register') ?>"><i class="glyphicon glyphicon-check"></i><?php echo ' Registrieren' ?></a></li> 
-                        <?php } else {
-                            ?>
+                        <?php } else { ?>
                             <li> <p class="navbar-text"><?php echo 'Hallo ' . $this->zfcUserDisplayName() ?></p>  </li>
                             <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('logout') ?>"><i class="glyphicon glyphicon-log-out"></i><?php echo ' Logout' ?></a></li>
-                        
-                                
-                                
-                                <?php } ?>
-                        <?php
-//if($this->identity()){
-// echo "jaa";   
-//}
-//$identity = Zend_Auth::getInstance()->getIdentity();
-                        ?>
+                        <?php } ?>
                     </ul> <!--  -->
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <!--        <div class="banner">
-                    <img src="<?php echo $this->basePath('img/banner.png') ?>" class ="img-responsive center-block" alt="Banner"/>
-                </div>-->
         <div class="container">
             <?php echo $this->content; ?>
             <hr>
