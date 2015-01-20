@@ -100,13 +100,13 @@ return array(
                             ),
                         ),
                     ),
-                    'changeuser' => array(
+                    'edituser' => array(
                         'type' => 'Literal',
                         'options' => array(
-                            'route' => '/change-user',
+                            'route' => '/edit-user',
                             'defaults' => array(
                                 'controller' => 'zfcuser',
-                                'action' => 'changeuser',
+                                'action' => 'edituser',
                             ),
                         ),
                     ),
