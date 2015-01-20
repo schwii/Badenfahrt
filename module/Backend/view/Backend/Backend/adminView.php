@@ -74,6 +74,7 @@ class adminView {
             echo "<td>$lastname</td>";
             //echo "<td><a href='editUser?user=$userid'>Edit</a></td>";
             echo "<td>$statetxt</td>";
+            echo "<td><button class='btn-xs btn-info' type='submit' name='editUser' value='$userid'>Editieren</button></td>";
             if ($state == 1) {
                 echo "<td><button class='btn-xs btn-danger' type='submit' name='deactivateUser' value='$userid'>Deaktivieren</button></td>";
             } else {
@@ -81,7 +82,7 @@ class adminView {
                 echo "<td><button class='btn-xs btn-success' type='submit' name='confirmUser' value='$userid'>Bestätigungs Mail senden</button></td>";
                 
             }
-            echo "<td><button class='btn-xs btn-info' type='submit' name='editUser' value='$userid'>Editieren</button></td>";
+            
 
             echo '</tr>';
         }
