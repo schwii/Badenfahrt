@@ -30,7 +30,6 @@ class adminView {
     public function display() {
         //echo $_POST['deactivate'];
         $users = $this->getAllUsersAction();   //Alle User
-
         // echo '</div>';  
         // echo '</div>'; 
         // echo '<div class="row">';
@@ -80,7 +79,6 @@ class adminView {
             } else {
                 echo "<td><button class='btn-xs btn-success' type='submit' name='activateUser' value='$userid'>Aktivieren</button></td>";
                 echo "<td><button class='btn-xs btn-success' type='submit' name='confirmUser' value='$userid'>Bestätigungs Mail senden</button></td>";
-                
             }
             
 

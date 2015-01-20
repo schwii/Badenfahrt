@@ -62,7 +62,6 @@ return array(
                 array('controller' => 'Application\Controller\Pc', 'action' => 'history', 'roles' => array('guest')),
                 array('controller' => 'Application\Controller\Pc', 'action' => 'general', 'roles' => array('guest')),
                 array('controller' => 'Application\Controller\Pc', 'action' => 'location', 'roles' => array('guest')),
-                array('controller' => 'Backend\Controller\Backend', 'action' => 'regconf', 'roles' => array('guest')),
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'index', 'roles' => array('guest')),
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'confirm', 'roles' => array('guest')),
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'stuff', 'roles' => array('admin')),

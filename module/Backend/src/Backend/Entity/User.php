@@ -1,11 +1,12 @@
 <?php
+
 /**
  * BjyAuthorize Module (https://github.com/bjyoungblood/BjyAuthorize)
  *
  * @link https://github.com/bjyoungblood/BjyAuthorize for the canonical source repository
  * @license http://framework.zend.com/license/new-bsd New BSD License
  */
- 
+
 namespace Backend\Entity;
 
 use BjyAuthorize\Provider\Role\ProviderInterface;
@@ -21,8 +22,8 @@ use ZfcUser\Entity\UserInterface;
  *
  * @author Tom Oram <tom@scl.co.uk>
  */
-class User implements UserInterface, ProviderInterface
-{
+class User implements UserInterface, ProviderInterface {
+
     /**
      * @var int
      * @ORM\Id
@@ -71,94 +72,80 @@ class User implements UserInterface, ProviderInterface
      */
     protected $roles;
 
-    
-    
-      /**
-* @ORM\Column(type="string", nullable=true)
-*/  
-  protected $logo;
-    
- /**
-* @ORM\Column(type="string", length=100, nullable=true)
-*/      
-  protected $orgname; 
-  
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $logo;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    protected $orgname;
+
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     */  
-  protected $timeCreate;
+     */
+    protected $timeCreate;
 
-  /**
+    /**
      * @ORM\Column(type="datetime", nullable=true)
-     */    
-  protected $timeUpdate;
-  
-    
-    
-  /**
-* @ORM\Column(type="string", length=50, nullable=true)
-*/    
- protected $contactSur;
- 
-/**
-* @ORM\Column(type="string", length=50, nullable=true)
-*/    
- protected $contactLast;
- 
- 
- 
-/**
-* @ORM\Column(type="integer", nullable=true)
-*/   
- protected $contactSex;
- 
- /**
-* @ORM\Column(type="string", length=100, nullable=true)
-*/ 
- 
- protected $street;
- 
+     */
+    protected $timeUpdate;
 
- 
- /**
-* @ORM\Column(type="string", length=10, nullable=true)
-*/ 
- protected $streetNr;
- 
- /**
-* @ORM\Column(type="integer", nullable=true)
-*/   
- protected $zip;
- 
-  /**
-* @ORM\Column(type="string", length=100, nullable=true)
-*/ 
- 
-protected $city;
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    protected $contactSur;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    protected $contactLast;
 
- /**
-* @ORM\Column(type="string", length=30, nullable=true)
-*/ 
-protected $phone;
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $contactSex;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    protected $street;
 
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    protected $streetNr;
 
- /**
-* @ORM\Column(type="string", length=255, nullable=true)
-*/ 
-protected $notice;    
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $zip;
 
- /**
-* @ORM\Column(type="string", length=20, nullable=true)
-*/ 
-protected $doubleoptin;   
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    protected $city;
+
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     */
+    protected $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $notice;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    protected $doubleoptin;
 
     /**
      * Initialies the roles variable.
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->roles = new ArrayCollection();
     }
 
@@ -167,8 +154,7 @@ protected $doubleoptin;
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -179,8 +165,7 @@ protected $doubleoptin;
      *
      * @return void
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = (int) $id;
     }
 
@@ -189,8 +174,7 @@ protected $doubleoptin;
      *
      * @return string
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
 
@@ -201,8 +185,7 @@ protected $doubleoptin;
      *
      * @return void
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
     }
 
@@ -211,8 +194,7 @@ protected $doubleoptin;
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -223,8 +205,7 @@ protected $doubleoptin;
      *
      * @return void
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
     }
 
@@ -233,8 +214,7 @@ protected $doubleoptin;
      *
      * @return string
      */
-    public function getDisplayName()
-    {
+    public function getDisplayName() {
         return $this->displayName;
     }
 
@@ -245,8 +225,7 @@ protected $doubleoptin;
      *
      * @return void
      */
-    public function setDisplayName($displayName)
-    {
+    public function setDisplayName($displayName) {
         $this->displayName = $displayName;
     }
 
@@ -255,8 +234,7 @@ protected $doubleoptin;
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -267,8 +245,7 @@ protected $doubleoptin;
      *
      * @return void
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
     }
 
@@ -277,8 +254,7 @@ protected $doubleoptin;
      *
      * @return int
      */
-    public function getState()
-    {
+    public function getState() {
         return $this->state;
     }
 
@@ -289,8 +265,7 @@ protected $doubleoptin;
      *
      * @return void
      */
-    public function setState($state)
-    {
+    public function setState($state) {
         $this->state = $state;
     }
 
@@ -299,8 +274,7 @@ protected $doubleoptin;
      *
      * @return array
      */
-    public function getRoles()
-    {
+    public function getRoles() {
         return $this->roles->getValues();
     }
 
@@ -311,8 +285,7 @@ protected $doubleoptin;
      *
      * @return void
      */
-    public function addRole($role)
-    {
+    public function addRole($role) {
         $this->roles[] = $role;
     }
 
@@ -322,8 +295,7 @@ protected $doubleoptin;
      * @param string $logo
      * @return User
      */
-    public function setLogo($logo)
-    {
+    public function setLogo($logo) {
         $this->logo = $logo;
 
         return $this;
@@ -334,8 +306,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getLogo()
-    {
+    public function getLogo() {
         return $this->logo;
     }
 
@@ -345,8 +316,7 @@ protected $doubleoptin;
      * @param string $orgname
      * @return User
      */
-    public function setOrgname($orgname)
-    {
+    public function setOrgname($orgname) {
         $this->orgname = $orgname;
 
         return $this;
@@ -357,8 +327,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getOrgname()
-    {
+    public function getOrgname() {
         return $this->orgname;
     }
 
@@ -368,8 +337,7 @@ protected $doubleoptin;
      * @param \DateTime $timeCreate
      * @return User
      */
-    public function setTimeCreate($timeCreate)
-    {
+    public function setTimeCreate($timeCreate) {
         $this->timeCreate = $timeCreate;
 
         return $this;
@@ -380,8 +348,7 @@ protected $doubleoptin;
      *
      * @return \DateTime 
      */
-    public function getTimeCreate()
-    {
+    public function getTimeCreate() {
         return $this->timeCreate;
     }
 
@@ -391,8 +358,7 @@ protected $doubleoptin;
      * @param \DateTime $timeUpdate
      * @return User
      */
-    public function setTimeUpdate($timeUpdate)
-    {
+    public function setTimeUpdate($timeUpdate) {
         $this->timeUpdate = $timeUpdate;
 
         return $this;
@@ -403,8 +369,7 @@ protected $doubleoptin;
      *
      * @return \DateTime 
      */
-    public function getTimeUpdate()
-    {
+    public function getTimeUpdate() {
         return $this->timeUpdate;
     }
 
@@ -414,8 +379,7 @@ protected $doubleoptin;
      * @param string $contactSur
      * @return User
      */
-    public function setContactSur($contactSur)
-    {
+    public function setContactSur($contactSur) {
         $this->contactSur = $contactSur;
 
         return $this;
@@ -426,8 +390,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getContactSur()
-    {
+    public function getContactSur() {
         return $this->contactSur;
     }
 
@@ -437,8 +400,7 @@ protected $doubleoptin;
      * @param string $contactLast
      * @return User
      */
-    public function setContactLast($contactLast)
-    {
+    public function setContactLast($contactLast) {
         $this->contactLast = $contactLast;
 
         return $this;
@@ -449,8 +411,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getContactLast()
-    {
+    public function getContactLast() {
         return $this->contactLast;
     }
 
@@ -460,8 +421,7 @@ protected $doubleoptin;
      * @param integer $contactSex
      * @return User
      */
-    public function setContactSex($contactSex)
-    {
+    public function setContactSex($contactSex) {
         $this->contactSex = $contactSex;
 
         return $this;
@@ -472,8 +432,7 @@ protected $doubleoptin;
      *
      * @return integer 
      */
-    public function getContactSex()
-    {
+    public function getContactSex() {
         return $this->contactSex;
     }
 
@@ -483,8 +442,7 @@ protected $doubleoptin;
      * @param string $street
      * @return User
      */
-    public function setStreet($street)
-    {
+    public function setStreet($street) {
         $this->street = $street;
 
         return $this;
@@ -495,8 +453,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getStreet()
-    {
+    public function getStreet() {
         return $this->street;
     }
 
@@ -506,8 +463,7 @@ protected $doubleoptin;
      * @param string $streetNr
      * @return User
      */
-    public function setStreetNr($streetNr)
-    {
+    public function setStreetNr($streetNr) {
         $this->streetNr = $streetNr;
 
         return $this;
@@ -518,8 +474,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getStreetNr()
-    {
+    public function getStreetNr() {
         return $this->streetNr;
     }
 
@@ -529,8 +484,7 @@ protected $doubleoptin;
      * @param integer $zip
      * @return User
      */
-    public function setZip($zip)
-    {
+    public function setZip($zip) {
         $this->zip = $zip;
 
         return $this;
@@ -541,8 +495,7 @@ protected $doubleoptin;
      *
      * @return integer 
      */
-    public function getZip()
-    {
+    public function getZip() {
         return $this->zip;
     }
 
@@ -552,8 +505,7 @@ protected $doubleoptin;
      * @param string $city
      * @return User
      */
-    public function setCity($city)
-    {
+    public function setCity($city) {
         $this->city = $city;
 
         return $this;
@@ -564,8 +516,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getCity()
-    {
+    public function getCity() {
         return $this->city;
     }
 
@@ -575,8 +526,7 @@ protected $doubleoptin;
      * @param string $phone
      * @return User
      */
-    public function setPhone($phone)
-    {
+    public function setPhone($phone) {
         $this->phone = $phone;
 
         return $this;
@@ -587,8 +537,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getPhone()
-    {
+    public function getPhone() {
         return $this->phone;
     }
 
@@ -598,8 +547,7 @@ protected $doubleoptin;
      * @param string $notice
      * @return User
      */
-    public function setNotice($notice)
-    {
+    public function setNotice($notice) {
         $this->notice = $notice;
 
         return $this;
@@ -610,8 +558,7 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getNotice()
-    {
+    public function getNotice() {
         return $this->notice;
     }
 
@@ -620,8 +567,7 @@ protected $doubleoptin;
      *
      * @param \Backend\Entity\Role $roles
      */
-    public function removeRole(\Backend\Entity\Role $roles)
-    {
+    public function removeRole(\Backend\Entity\Role $roles) {
         $this->roles->removeElement($roles);
     }
 
@@ -631,14 +577,13 @@ protected $doubleoptin;
      * @param string $doubleoptin
      * @return User
      */
-    public function setDoubleoptin($charcount)
-    {
-        mt_srand((double) microtime() * 1000000); 
+    public function setDoubleoptin($charcount) {
+        mt_srand((double) microtime() * 1000000);
         $set = "ABCDEFGHIKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
         $doubleoptin = "";
-        
-        for ($i=1;$i<=$charcount;$i++){
-            $doubleoptin .= $set[mt_rand(0,(strlen($set)-1))];
+
+        for ($i = 1; $i <= $charcount; $i++) {
+            $doubleoptin .= $set[mt_rand(0, (strlen($set) - 1))];
         }
 
         $this->doubleoptin = $doubleoptin;
@@ -651,23 +596,20 @@ protected $doubleoptin;
      *
      * @return string 
      */
-    public function getDoubleoptin()
-    {
+    public function getDoubleoptin() {
         return $this->doubleoptin;
     }
-    
-    
-    public function sendConfirmationMail()
-    {
-        
-        $header  = "MIME-Version: 1.0\r\n";
+
+    public function sendConfirmationMail() {
+
+        $header = "MIME-Version: 1.0\r\n";
         $header .= "Content-type: text/html; charset=iso-8859-1\r\n";
         $header .= "From: noreply@badenfahrt2017.ch\r\n";
         //$header .= "Reply-To: noreply@badenfahrt2017.ch\r\n";
-        $header .= "X-Mailer: PHP ". phpversion();
+        $header .= "X-Mailer: PHP " . phpversion();
         $rcpt = $this->getEmail();
         $subject = "Benutzerportal Badenfahrt 2017 - Bitte bestätigen Sie Ihre E-Mail Adresse";
-        
+
         //$body  = file_get_contents('ergend e hmtl vorlag');
         $link = "http://badenfahrt.local/Backend/confirm?doi=" . $this->getDoubleoptin();
 
@@ -682,8 +624,8 @@ protected $doubleoptin;
                 </body>
                 </html>
                     ";
-        
-        mail( $rcpt, $subject, $body, $header);
-       
+
+        mail($rcpt, $subject, $body, $header);
     }
+
 }

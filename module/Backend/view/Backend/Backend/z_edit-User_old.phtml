@@ -1,34 +1,34 @@
 <?php
+
 include_once 'editUserView.php';
 
 //$userId = $_GET["user"];
-
 //auf Admin überprüfen ansonsten eigene UserID
 
-if(!empty($_POST['editUser'])){
-   $userId= $_POST['editUser'];
+if (!empty($_POST['editUser'])) {
+    $userId = $_POST['editUser'];
 }
 $user = $em->find('Backend\Entity\User', $userId);
 
 $view = new editUserView($em);
 
 switch ($_SERVER['REQUEST_METHOD']) {
-            
-            case 'GET':
-                   $view->assign('Email', $user->getEmail());
-                   $view->assign('ContactLast', $user->getContactLast());
-                   $view->assign('ContactSur', $user->getContactSur());
-                   $view->assign('State', $user->getState());
-                   $view->display();
-            break;
-            
-            case 'POST':
-                $view->assign('userID', $userId);
-                $view->change();
-                break;
-            default:
-                break;
-        }
+
+    case 'GET':
+        $view->assign('Email', $user->getEmail());
+        $view->assign('ContactLast', $user->getContactLast());
+        $view->assign('ContactSur', $user->getContactSur());
+        $view->assign('State', $user->getState());
+        $view->display();
+        break;
+
+    case 'POST':
+        $view->assign('userID', $userId);
+        $view->change();
+        break;
+    default:
+        break;
+}
 
 
  

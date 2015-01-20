@@ -1,17 +1,19 @@
 <?php
+
 $entityManager;
 
-class userView{
-private $user;
-     public function __construct($em, $usr) {
+class userView {
+
+    private $user;
+
+    public function __construct($em, $usr) {
         global $entityManager;
-       
-   
+
+
         $entityManager = $em;
         $this->user = $usr;
-        
     }
-   
+
     public function display() {
 
         $orgname = $this->user->getOrgname();
@@ -20,16 +22,16 @@ private $user;
         $street = $this->user->getStreet();
         $streetNr = $this->user->getStreetNr();
         $zip = $this->user->getZip();
-        $city = $this->user->getCity();  
+        $city = $this->user->getCity();
         $image = $this->user->getLogo();
         $email = $this->user->getEmail();
         $phone = $this->user->getPhone();
         //$timecreate = $this->user->getTimeCreate()->format("d-m-Y H:i:s");
-       //$timecreate = date("d-m-Y H:i:s", strtotime($this->user->getTimeCreate()));
-       $timecreate = 'hüt';
+        //$timecreate = date("d-m-Y H:i:s", strtotime($this->user->getTimeCreate()));
+        $timecreate = 'hüt';
 
 
-echo <<<FORM
+        echo <<<FORM
        <form class="form-horizontal" method="post">
  <div class="containert">
       <div class="row">
@@ -85,8 +87,6 @@ echo <<<FORM
    
  
 FORM;
-
-
     }
-}
 
+}

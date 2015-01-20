@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BjyAuthorize Module (https://github.com/bjyoungblood/BjyAuthorize)
  *
@@ -19,8 +20,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @author Tom Oram <tom@scl.co.uk>
  */
-class Role implements HierarchicalRoleInterface
-{
+class Role implements HierarchicalRoleInterface {
+
     /**
      * @var int
      * @ORM\Id
@@ -47,8 +48,7 @@ class Role implements HierarchicalRoleInterface
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,9 +59,8 @@ class Role implements HierarchicalRoleInterface
      *
      * @return void
      */
-    public function setId($id)
-    {
-        $this->id = (int)$id;
+    public function setId($id) {
+        $this->id = (int) $id;
     }
 
     /**
@@ -69,8 +68,7 @@ class Role implements HierarchicalRoleInterface
      *
      * @return string
      */
-    public function getRoleId()
-    {
+    public function getRoleId() {
         return $this->roleId;
     }
 
@@ -81,8 +79,7 @@ class Role implements HierarchicalRoleInterface
      *
      * @return void
      */
-    public function setRoleId($roleId)
-    {
+    public function setRoleId($roleId) {
         $this->roleId = (string) $roleId;
     }
 
@@ -91,8 +88,7 @@ class Role implements HierarchicalRoleInterface
      *
      * @return Role
      */
-    public function getParent()
-    {
+    public function getParent() {
         return $this->parent;
     }
 
@@ -103,8 +99,8 @@ class Role implements HierarchicalRoleInterface
      *
      * @return void
      */
-    public function setParent(Role $parent)
-    {
+    public function setParent(Role $parent) {
         $this->parent = $parent;
     }
+
 }
