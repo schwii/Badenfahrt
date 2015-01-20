@@ -8,6 +8,16 @@ return array(
             'Backend\Controller\Backend' => 'Backend\Controller\BackendController',
         ),
     ),
+    'translator' => array(
+        'locale' => 'de_DE',
+        'translation_file_patterns' => array(
+            array(
+                'type' => 'gettext',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern' => '%s.mo',
+            ),
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'Backend' => array(
