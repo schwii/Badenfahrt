@@ -6,7 +6,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Backend\Controller\Backend' => 'Backend\Controller\BackendController',
-        ),
+         ),
     ),
     'translator' => array(
         'locale' => 'de_DE',
