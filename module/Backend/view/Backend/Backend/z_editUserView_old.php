@@ -1,17 +1,19 @@
 <?php
+
 $entityManager;
-class editUserView_old{
-protected $vars = array(); 
 
+class editUserView_old {
 
-public function __construct($em) {
-    global $entityManager;
-    $entityManager = $em;
-}
+    protected $vars = array();
 
-public function display(){
+    public function __construct($em) {
+        global $entityManager;
+        $entityManager = $em;
+    }
 
-echo <<<FORM
+    public function display() {
+
+        echo <<<FORM
  <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -67,32 +69,30 @@ echo <<<FORM
    
  
 FORM;
-}  
-
-
-public function change(){
-    
-    //Abfragen auf Änderung etc?
-    
-    global $entityManager;
-    $user = $entityManager->find('Backend\Entity\User', $this->vars['userID']);
-    $user->setContactLast($_POST['lastname']);
-    $user->setContactSur($_POST['surname']);
-    $user->setEmail($_POST['email']);
-    if(!$_POST['password']=="" && $_POST['password']==$_POST['passwordrepeat']){
-        $user->setPassword($_POST['password']);
     }
-    else{
-        "echo pw falsch -> bei phtml abfragen und alte werte übergeben";
-    }    
-    
-    $entityManager->flush();
-    
-    //echo $_POST['email'];
-}
 
-public function assign($key, $value) {
+    public function change() {
+
+        //Abfragen auf Änderung etc?
+
+        global $entityManager;
+        $user = $entityManager->find('Backend\Entity\User', $this->vars['userID']);
+        $user->setContactLast($_POST['lastname']);
+        $user->setContactSur($_POST['surname']);
+        $user->setEmail($_POST['email']);
+        if (!$_POST['password'] == "" && $_POST['password'] == $_POST['passwordrepeat']) {
+            $user->setPassword($_POST['password']);
+        } else {
+            "echo pw falsch -> bei phtml abfragen und alte werte übergeben";
+        }
+
+        $entityManager->flush();
+
+        //echo $_POST['email'];
+    }
+
+    public function assign($key, $value) {
         $this->vars[$key] = $value;
     }
-    
+
 }

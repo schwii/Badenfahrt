@@ -1,29 +1,29 @@
 <?php
 
-class editUserView{
+class editUserView {
 
-public function editUser($entityManager, $userID){
-    
-     $user = $entityManager->find('Backend\Entity\User', $userID);
-    $email = $user->getEmail();
-    $contactLast = $user->getContactLast();
-    $contactSur = $user->getContactSur();
-    
-    
-    
+    public function editUser($entityManager, $userID) {
+
+        $user = $entityManager->find('Backend\Entity\User', $userID);
+        $email = $user->getEmail();
+        $contactLast = $user->getContactLast();
+        $contactSur = $user->getContactSur();
+
+
+
 //    $user = $entityManager->find('Backend\Entity\User', $userID);
         $orgname = $user->getOrgname();
         $street = $user->getStreet();
         $streetNr = $user->getStreetNr();
         $zip = $user->getZip();
-        $city = $user->getCity();  
+        $city = $user->getCity();
         $image = $user->getLogo();
         $sex = $user->getContactSex();
         $phone = $user->getPhone();
         $password = $user->getPassword();
-    
-        
-    echo <<<FORM
+
+
+        echo <<<FORM
 <div class="container">
     <h1>Edit Profile</h1>
   	<hr>
@@ -131,16 +131,10 @@ public function editUser($entityManager, $userID){
 <hr>
  
 FORM;
-}
-
+    }
 
 //include_once('vendor\zendframework\zendframework\library\Zend\Crypt\Password\bcrypt.php'); 
 //$bcrypt = new Zend\Crypt\Password\Bcrypt();
 //$bcrypt->setCost(14);
 //echo $bcrypt->create($password);
-
-
-
-
-
 }

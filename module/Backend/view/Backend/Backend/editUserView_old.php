@@ -1,14 +1,14 @@
 <?php
 
-class editUserView{
+class editUserView {
 
-public function editUser($entityManager, $userID){
-    
-    $user = $entityManager->find('Backend\Entity\User', $userID);
-    $email = $user->getEmail();
-    $contactLast = $user->getContactLast();
-    $contactSur = $user->getContactSur();
-    echo <<<FORM
+    public function editUser($entityManager, $userID) {
+
+        $user = $entityManager->find('Backend\Entity\User', $userID);
+        $email = $user->getEmail();
+        $contactLast = $user->getContactLast();
+        $contactSur = $user->getContactSur();
+        echo <<<FORM
  <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -64,16 +64,10 @@ public function editUser($entityManager, $userID){
    
  
 FORM;
-}
-
+    }
 
 //include_once('vendor\zendframework\zendframework\library\Zend\Crypt\Password\bcrypt.php'); 
 //$bcrypt = new Zend\Crypt\Password\Bcrypt();
 //$bcrypt->setCost(14);
 //echo $bcrypt->create($password);
-
-
-
-
-
 }
