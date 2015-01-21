@@ -100,6 +100,16 @@ return array(
                             ),
                         ),
                     ),
+                    'changeuser' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/change-user',
+                            'defaults' => array(
+                                'controller' => 'zfcuser',
+                                'action' => 'changeuser',
+                            ),
+                        ),
+                    ),
                     'edituser' => array(
                         'type' => 'Literal',
                         'options' => array(
