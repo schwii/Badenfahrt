@@ -1,3 +1,5 @@
+<!-- Seite für das Layout -->
+
 <?php echo $this->doctype(); ?>
 
 <html lang="en">
@@ -31,6 +33,7 @@
 
     </head>
     <body>
+        <!-- Navigation -->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -39,9 +42,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <!-- Logo mit URL auf die Indexseite -->
                     <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/logo.png') ?>" alt="Stadt Baden"/>&nbsp;<?php echo 'Badenfahrt 2017' ?></a>
                 </div>
                 <div class="collapse navbar-collapse">
+                    <!-- Navigation linker Teil -->
                     <ul class="nav navbar-nav">
                         <li><a href="<?php echo $this->url('home') ?>"><i class="glyphicon glyphicon-home"></i><?php echo ' Home' ?></a></li>
                         <li class="dropdown">
@@ -55,6 +60,7 @@
                                 <li><a href="<?php echo $this->url('location') ?>"><?php echo 'Informationen Stand' ?></a></li>
                             </ul>
                         </li>
+                        <!-- Button für Admin/Userbereich, je nach dem, ob Admin oder User -->
                         <li><?php if ($this->isAllowed('user', 'administrateAll')) { ?>
                                 <a href="<?php echo $this->url('Backend') ?>"><?php echo 'Administationsbereich' ?></a>     
                             <?php } elseif ($this->isAllowed('user', 'administrateOwn')) {
@@ -62,8 +68,12 @@
                                 <a href="<?php echo $this->url('Backend') ?>"><i class="glyphicon glyphicon-user"></i><?php echo ' Userbereich' ?></a>
                             <?php } ?>
                         </li>
+                        <!-- Ende Button für Admin/Userbereich -->
                     </ul>
+                    <!-- Ende Navigation linker Teil -->
+                    <!-- Navigation rechter Teil -->
                     <ul class="nav navbar-nav navbar-right">
+                        <!-- Anzeige für Login/Registrieren Button, oder wenn eingeloggt, Displaynamen des aktuell eingeloggten Users und Logout Button --> 
                         <?php if (empty($this->zfcUserDisplayName())) { ?>
                             <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('login') ?>"><i class="glyphicon glyphicon-log-in"></i><?php echo ' Login' ?></a></li> 
                             <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('register') ?>"><i class="glyphicon glyphicon-check"></i><?php echo ' Registrieren' ?></a></li> 
@@ -71,17 +81,21 @@
                             <li> <p class="navbar-text"><?php echo 'Hallo ' . $this->zfcUserDisplayName() ?></p>  </li>
                             <li class="btn btn-xs btn-default"><a href="<?php echo $this->url('logout') ?>"><i class="glyphicon glyphicon-log-out"></i><?php echo ' Logout' ?></a></li>
                         <?php } ?>
-                    </ul> <!--  -->
-                </div><!--/.nav-collapse -->
+                            <!-- Ende Anzeige -->
+                    </ul>
+                    <!-- Ende Navigation rechter Teil -->
+                </div>
             </div>
         </nav>
+        <!-- Ende Navigation -->
+
         <div class="container">
-            <?php echo $this->content; ?>
+            <?php echo $this->content; ?> <!-- Anzeige für die phtml Files -->
             <hr>
             <footer>
                 <p>&copy; 2015 - <?php echo date('Y') ?> by Gruppe JKI <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
-        </div> <!-- /container -->
+        </div> 
         <?php echo $this->inlineScript() ?>
     </body>
 </html>
