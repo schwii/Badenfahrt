@@ -62,7 +62,7 @@
                         </li>
                         <!-- Button für Admin/Userbereich, je nach dem, ob Admin oder User -->
                         <li><?php if ($this->isAllowed('user', 'administrateAll')) { ?>
-                                <a href="<?php echo $this->url('Backend') ?>"><?php echo 'Administationsbereich' ?></a>     
+                                <a href="<?php echo $this->url('Backend') ?>"><i class="glyphicon glyphicon-fire"></i><?php echo ' Administrationsbereich' ?></a>     
                             <?php } elseif ($this->isAllowed('user', 'administrateOwn')) {
                                 ?>
                                 <a href="<?php echo $this->url('Backend') ?>"><i class="glyphicon glyphicon-user"></i><?php echo ' Userbereich' ?></a>

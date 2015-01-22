@@ -78,7 +78,7 @@ class userView {
             </div>
                  <div class="panel-footer">
                             <strong><p>Ändern: </p></strong>
-                            <button class='btn-xs btn-info' type='submit' value='C' name='editUser'>Personalien <i class="glyphicon glyphicon-edit"></i></button>
+                            <button class='btn-xs btn-info' type='submit' value='C' name='editUser'>Profil <i class="glyphicon glyphicon-edit"></i></button>
                             <button class='btn-xs btn-info' type='submit' value='E' name='editUser'>E-Mail <i class="glyphicon glyphicon-envelope"></i></button>
                             <button class='btn-xs btn-info' type='submit' value='P' name='editUser'>Passwort <i class="glyphicon glyphicon-wrench"></i></button>    
                             <button class='btn-xs btn-info' type='submit' value='A' name='editUser'>Logo <i class="glyphicon glyphicon-picture"></i></button>

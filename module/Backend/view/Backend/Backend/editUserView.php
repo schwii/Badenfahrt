@@ -41,20 +41,11 @@ class editUserView {
         
         echo <<<FORM
 <div class="container">
-    <h1>Edit Profile</h1>
+    <h1>Profil bearbeiten</h1>
   	<hr>
 	<div class="row">
-      <!-- left column -->
       
-      
-      <!-- edit form column -->
-      <div class="col-md-9 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">Schliessens</a> 
-          <i class="fa fa-coffee"></i>
-        </div>
-        <h3>Personal info</h3>
-        <form class="form-horizontal" role="form"method="post">
+         <form class="form-horizontal" role="form"method="post">
             <input name="userID" class="form-control" type="hidden" value=$userID >
           <div class="form-group">
             <label class="col-lg-3 control-label">Vorname:</label>
@@ -130,9 +121,9 @@ class editUserView {
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <button name="changeUser" value="UsErChAnGe" type="submit" class="btn btn-primary btn-lg">Ändern</button>
+              <button name="changeUser" value="UsErChAnGe" type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> Ändern</button>
               <span></span>
-              <input type="reset" class="btn btn-default" value="Cancel">
+               <button name="cancel" value="cancel" type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-ban-circle"></i> Abbrechen</button>
             </div>
           </div>
         </form>

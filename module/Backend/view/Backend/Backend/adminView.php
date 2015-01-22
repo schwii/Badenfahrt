@@ -37,7 +37,8 @@ class adminView {
         echo '<form class="form-horizontal" method="post">';
         echo '<div class="panel panel-default">';
         echo '<div class="panel-heading">';
-        echo '<h3 class="panel-title">User Übersicht</h3>';
+        $usercount = count($users);
+        echo "<h3 class='panel-title'>User Übersicht - Anzahl: $usercount</h3>";
         echo '</div>';
         echo '<div class="panel-body">';
         echo '<table class="table">';
@@ -73,12 +74,12 @@ class adminView {
             echo "<td>$lastname</td>";
             //echo "<td><a href='editUser?user=$userid'>Edit</a></td>";
             echo "<td>$statetxt</td>";
-            echo "<td><button class='btn-xs btn-info' type='submit' name='editUser' value='$userid'>Editieren</button></td>";
+            echo "<td><button class='btn-xs btn-info' type='submit' name='editUser' value='$userid'><i class='glyphicon glyphicon-edit'></i> Editieren</button></td>";
             if ($state == 1) {
-                echo "<td><button class='btn-xs btn-danger' type='submit' name='deactivateUser' value='$userid'>Deaktivieren</button></td>";
+                echo "<td><button class='btn-xs btn-danger' type='submit' name='deactivateUser' value='$userid'><i class='glyphicon glyphicon-remove'></i> Deaktivieren</button></td>";
             } else {
-                echo "<td><button class='btn-xs btn-success' type='submit' name='activateUser' value='$userid'>Aktivieren</button></td>";
-                echo "<td><button class='btn-xs btn-success' type='submit' name='confirmUser' value='$userid'>Bestätigungs Mail senden</button></td>";
+                echo "<td><button class='btn-xs btn-success' type='submit' name='activateUser' value='$userid'><i class='glyphicon glyphicon-ok'></i> Aktivieren</button></td>";
+                echo "<td><button class='btn-xs btn-warning' type='submit' name='confirmUser' value='$userid'><i class='glyphicon glyphicon-envelope'></i> Bestätigungs Mail senden</button></td>";
             }
             
 
