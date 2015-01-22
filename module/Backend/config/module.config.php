@@ -1,13 +1,25 @@
 <?php
 
+/**
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
+ * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * 
+ * Module Konfig File - Module: Backend
+ */
+
 namespace Backend;
 
 return array(
+    // Array mit den Controllern aus dem Modul Backend
     'controllers' => array(
         'invokables' => array(
             'Backend\Controller\Backend' => 'Backend\Controller\BackendController',
-         ),
+        ),
     ),
+    // Array für den integrierten Übersetzer
     'translator' => array(
         'locale' => 'de_DE',
         'translation_file_patterns' => array(
@@ -18,6 +30,7 @@ return array(
             ),
         ),
     ),
+    // Array mit allen Routen, welche im Applikation Module benötigt werden
     'router' => array(
         'routes' => array(
             'Backend' => array(

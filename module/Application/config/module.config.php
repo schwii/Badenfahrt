@@ -129,6 +129,7 @@ return array(
             'translator' => 'MvcTranslator',
         ),
     ),
+     // Array für den integrierten Übersetzer
     'translator' => array(
         'locale' => 'de_DE',
         'translation_file_patterns' => array(
