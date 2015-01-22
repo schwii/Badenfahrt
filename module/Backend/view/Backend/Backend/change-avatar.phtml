@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if ($check !== false) {
-        echo "Datei ist ein Bild - " . $check["mime"] . ".";
+      //  echo "Datei ist ein Bild - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
         echo "File is not an image.";
@@ -62,7 +62,10 @@ if (isset($_POST["submit"])) {
             $oldlogo = $user->getLogo();
             $user->setLogo($randomvalue . "." . $imageFileType);
             $em->flush();
-            unlink($logopath . $oldlogo);
+            if(!empty($oldlogo)){
+                       unlink($logopath . $oldlogo);     
+            }
+
         } else {
             echo "Ups, Ihr Bild konnte nicht hochgeladen werden!";
         }
