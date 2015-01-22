@@ -6,8 +6,11 @@
  * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * 
+ * Module Konfig File - Module: application
  */
 return array(
+    // Array mit allen Routen, welche im Applikation Module benötigt werden
     'router' => array(
         'routes' => array(
             'home' => array(
@@ -20,16 +23,6 @@ return array(
                     ),
                 ),
             ),
-            //            'info' => array(
-//                'type' => 'Segment',
-//                'options' => array(
-//                    'route' => '/info',
-//                    'defaults' => array(
-//                        'controller' => 'Application\Controller\Pc',
-//                        'action' => 'info',
-//                    ),
-//                ),
-//            ),
             'actual' => array(
                 'type' => 'Segment',
                 'options' => array(
@@ -126,6 +119,7 @@ return array(
             ),
         ),
     ),
+    // Ende Array mit den Routen
     'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -142,15 +136,17 @@ return array(
                 'type' => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern' => '%s.mo',
-             ),
+            ),
         ),
     ),
+    // Array mit den Controllern aus dem Modul application
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Pc' => 'Application\Controller\PcController'
         ),
     ),
+    // Ende Array Controller
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions' => true,
@@ -168,7 +164,6 @@ return array(
             'zfcuser' => __DIR__ . '/../view', // <- eigene views login etc.
         ),
     ),
-    // Placeholder for console routes
     'console' => array(
         'router' => array(
             'routes' => array(
