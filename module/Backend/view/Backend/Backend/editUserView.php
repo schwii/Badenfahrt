@@ -2,6 +2,8 @@
 
 class editUserView {
 
+    protected $admin;
+    
     public function editUser($entityManager, $userID) {
 
         $user = $entityManager->find('Backend\Entity\User', $userID);
@@ -20,9 +22,24 @@ class editUserView {
         $image = $user->getLogo();
         $sex = $user->getContactSex();
         $phone = $user->getPhone();
-        $password = $user->getPassword();
+        //$password = $user->getPassword();
 
 
+        
+        if($this->admin){
+            echo "!!!!!!!!!!!!!!!!!!!!!!!!";
+            $passwordInput =  '        <div class="form-group">
+            <label class="col-lg-3 control-label">Passwort:</label>
+            <div class="col-lg-8">
+              <input name="password" class="form-control" type="text">
+            </div>
+          </div>';
+        }
+        else{
+            $passwordInput = "";
+        }
+        
+        
         echo <<<FORM
 <div class="container">
     <h1>Edit Profile</h1>
@@ -46,8 +63,8 @@ class editUserView {
           <strong>Achtung,</strong> hier könnte ihre Werbung stehen!
         </div>
         <h3>Personal info</h3>
-        
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form"method="post">
+            <input name="userID" class="form-control" type="hidden" value=$userID >
           <div class="form-group">
             <label class="col-lg-3 control-label">Vorname:</label>
             <div class="col-lg-8">
@@ -78,7 +95,7 @@ class editUserView {
           <div class="form-group">
             <label class="col-lg-3 control-label">Firma, Organisation:</label>
             <div class="col-lg-8">
-              <input name="orgname" class="form-control" type="text" required value=$orgname>
+              <input name="orgname" class="form-control" type="text" value=$orgname>
             </div>
           </div>
               
@@ -116,6 +133,9 @@ class editUserView {
               <input name="phone" class="form-control" type="text" required value=$phone >
             </div>
           </div>   
+         
+            $passwordInput
+            
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
@@ -131,6 +151,9 @@ class editUserView {
 <hr>
  
 FORM;
+    }
+    public function setAdmin(){
+        $this->admin = true;
     }
 
 //include_once('vendor\zendframework\zendframework\library\Zend\Crypt\Password\bcrypt.php'); 

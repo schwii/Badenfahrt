@@ -7,20 +7,37 @@ include_once 'editUserView.php';
 if (!empty($_POST['editUser'])) {
     $view = new editUserView();
 
-    if ($_POST['editUser'] == "2") {
+    if ($_POST['editUser'] == "E") {
         echo'<meta http-equiv="refresh" content="0; url=../user/change-email" />';
     }
-    if ($_POST['editUser'] == "3") {
+    if ($_POST['editUser'] == "P") {
         echo'<meta http-equiv="refresh" content="0; url=../user/change-password" />';
     } else {
         if ($this->isAllowed('user', 'administrateAll')) {
+            $view->setAdmin();
             $view->editUser($em, $_POST['editUser']);
         } else {
             $view->editUser($em, $this->zfcUserIdentity()->getId());
         }
     }
 } elseif (!empty($_POST['changeUser']) && $_POST['changeUser'] == 'UsErChAnGe') {
-    echo "blabla ändere";
+    $user = $em->find('Backend\Entity\User',$_POST['userID']);
+    $user->setContactLast($_POST['contactLast']);
+    $user->setContactSur($_POST['contactSur']);
+    $user->setOrgname($_POST['orgname']);
+    $user->setStreet($_POST['street']);
+    $user->setStreetNr($_POST['streetNr']);
+    $user->setZip($_POST['zip']);
+    $user->setCity($_POST['city']);
+    $user->setPhone($_POST['phone']);
+        if(!empty($_POST['password'])){
+            include_once('vendor\zendframework\zendframework\library\Zend\Crypt\Password\bcrypt.php'); 
+            $bcrypt = new Zend\Crypt\Password\Bcrypt();
+            $bcrypt->setCost(14);
+            $user->setPassword( $bcrypt->create($_POST['password']));
+}    
+    $em->flush();
+    echo "mhhh so lässig";
 } else {
 
     if ($this->isAllowed('user', 'administrateAll')) {
@@ -31,7 +48,8 @@ if (!empty($_POST['editUser'])) {
             $view = new userView($em, $this->zfcUserIdentity());
             $view->display();
         } else {
-            echo "zuerst bestätigen";
+            echo "Bitte bestätigen Sie Ihre E-Mail Adresse";
+            //->button für neu Senden von Mail
         }
     } else {
         echo'<meta http-equiv="refresh" content="0; url=../user/login" />';
