@@ -1,29 +1,22 @@
 <?php
 
-use Symfony\Component\Validator\Constraints as Assert;
-
 echo <<<FORM
     <form action="changeAvatar" method="post" enctype="multipart/form-data">
-    Select image to upload:
+    Bild auswählen:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload Image" name="submit">
-    </form> 
-              
-
-        
+    </form>    
 FORM;
 
 
-
 if (isset($_POST["submit"])) {
-    //$target_dir = "avatarimages/";
-    $target_dir = "./tmp/";
+    $target_dir = "./images/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        echo "Datei ist ein Bild - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
         echo "File is not an image.";
@@ -37,7 +30,7 @@ if (isset($_POST["submit"])) {
     }
 // Check file size
     if ($_FILES["fileToUpload"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
+        echo "Ihr Bild ist leider zu gross. Bitte verkleinern Sie es und versuchen es nochmals.";
         $uploadOk = 0;
     }
 // Allow certain file formats
@@ -50,15 +43,28 @@ if (isset($_POST["submit"])) {
         echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
     } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+        
+                mt_srand((double) microtime() * 1000000);
+        $set = "ABCDEFGHIKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
+        $randomvalue = "";
 
-            $user = $em->find('Backend\Entity\User', 2); //user 1! zum testen
-            $user->setLogo($_FILES["fileToUpload"]["name"]);
+        for ($i = 1; $i <= 10; $i++) {
+            $randomvalue .= $set[mt_rand(0, (strlen($set) - 1))];
+        }
+        
+        $logopath ="./public/img/users/";
+        
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $logopath  . $randomvalue . "." . $imageFileType)) {
+            echo "Das Bild " . basename($_FILES["fileToUpload"]["name"]) . " wurde hochgeladen.<br>";
+            echo "<a href=''>...zum Userbereich<a>";
+            
+            $user = $em->find('Backend\Entity\User', $this->zfcUserIdentity()->getId());
+            $oldlogo = $user->getLogo();
+            $user->setLogo($randomvalue . "." . $imageFileType);
             $em->flush();
-            unlink($target_file);
+            unlink($logopath . $oldlogo);
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo "Ups, Ihr Bild konnte nicht hochgeladen werden!";
         }
     }
 }

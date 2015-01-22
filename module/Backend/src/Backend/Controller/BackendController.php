@@ -42,5 +42,11 @@ class BackendController extends AbstractActionController {
             'em' => $this->getEntityManager(),
         ));
     }
+    
+    public function deactivateUserAction() {
+        return new ViewModel(array(
+            'em' => $this->getEntityManager(),
+        ));
+    }
 
 }

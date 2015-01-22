@@ -1,0 +1,22 @@
+<?php
+
+echo <<<FORM
+    <form action="deactivateUser" method="post" enctype="multipart/form-data">
+    <p>Achtung! Hiermit wird Ihr Konto gelöscht!</p> 
+    <button class='btn-xs btn-danger' type='submit' value='D' name='submit'>Konto löschen <i class="glyphicon glyphicon-trash"></i></button>
+    <button class='btn-xs btn-success' type='submit' value='A' name='submit'>Abbrechen <i class="glyphicon glyphicon-ban-circle"></i></button> 
+   </form>    
+FORM;
+
+if (isset($_POST["submit"])) {
+    if($_POST["submit"]=="D"){
+         $user = $em->find('Backend\Entity\User', $this->zfcUserIdentity()->getId());
+         $user->setState(9);
+         $em->flush();
+         echo'<meta http-equiv="refresh" content="0; url=../user/logout" />';
+    }
+    else{
+        echo'<meta http-equiv="refresh" content="0; url=../Backend/index" />';
+    }
+    
+}

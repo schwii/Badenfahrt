@@ -4,15 +4,21 @@ include_once 'adminView.php';
 include_once 'userView.php';
 include_once 'editUserView.php';
 
-if (!empty($_POST['editUser'])) {
-    $view = new editUserView();
-
-    if ($_POST['editUser'] == "E") {
+if (!empty($_POST['editUser'])) {  //mit switch-case lösen!!!!!
+       
+    if ($_POST['editUser'] == "A") {
+        echo'<meta http-equiv="refresh" content="0; url=../Backend/changeAvatar" />';
+    }
+    elseif ($_POST['editUser'] == "D") {
+        echo'<meta http-equiv="refresh" content="0; url=../Backend/deactivateUser" />';
+    }
+    elseif ($_POST['editUser'] == "E") {
         echo'<meta http-equiv="refresh" content="0; url=../user/change-email" />';
     }
-    if ($_POST['editUser'] == "P") {
+    elseif ($_POST['editUser'] == "P") {
         echo'<meta http-equiv="refresh" content="0; url=../user/change-password" />';
     } else {
+        $view = new editUserView();
         if ($this->isAllowed('user', 'administrateAll')) {
             $view->setAdmin();
             $view->editUser($em, $_POST['editUser']);
@@ -38,7 +44,10 @@ if (!empty($_POST['editUser'])) {
 }    
     $em->flush();
     echo "mhhh so lässig";
-} else {
+} elseif(!empty($_POST['changeAvatar']) && $_POST['changeAvatar'] == 'A'){
+    
+}
+else {
 
     if ($this->isAllowed('user', 'administrateAll')) {
         $view = new adminView($em);
@@ -48,7 +57,9 @@ if (!empty($_POST['editUser'])) {
             $view = new userView($em, $this->zfcUserIdentity());
             $view->display();
         } else {
-            echo "Bitte bestätigen Sie Ihre E-Mail Adresse";
+            echo "<h1>Nur noch einen Schritt!</h1><br>";
+            echo "<p>Um den Userbereich zu Nutzen, müssen Sie Ihre E-Mail Adresse bestätigen.</p><br>";
+            echo "<p>Sie sollten in den nächsten Minuten eine E-Mail von uns erhalten.";
             //->button für neu Senden von Mail
         }
     } else {

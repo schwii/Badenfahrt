@@ -56,6 +56,7 @@ return array(
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'editUser', 'roles' => array('admin')),
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'changeAvatar', 'roles' => array('user')),
                 array('controller' => 'Backend\Controller\Backend', 'action' => 'upload', 'roles' => array('user')),
+                array('controller' => 'Backend\Controller\Backend', 'action' => 'deactivateUser', 'roles' => array('user')),
             ],
         ],
         'resource_providers' => [

@@ -27,7 +27,6 @@ class editUserView {
 
         
         if($this->admin){
-            echo "!!!!!!!!!!!!!!!!!!!!!!!!";
             $passwordInput =  '        <div class="form-group">
             <label class="col-lg-3 control-label">Passwort:</label>
             <div class="col-lg-8">
@@ -46,21 +45,13 @@ class editUserView {
   	<hr>
 	<div class="row">
       <!-- left column -->
-      <div class="col-md-3">
-        <div class="text-center">
-          <img src="$image" class="avatar img" alt="avatar">
-          <h6>Anderes Foto hochladen</h6>
-          
-          <input type="file" class="form-control">
-        </div>
-      </div>
+      
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
         <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">�</a> 
+          <a class="panel-close close" data-dismiss="alert">Schliessens</a> 
           <i class="fa fa-coffee"></i>
-          <strong>Achtung,</strong> hier könnte ihre Werbung stehen!
         </div>
         <h3>Personal info</h3>
         <form class="form-horizontal" role="form"method="post">

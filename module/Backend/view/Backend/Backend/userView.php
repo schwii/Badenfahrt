@@ -23,7 +23,8 @@ class userView {
         $streetNr = $this->user->getStreetNr();
         $zip = $this->user->getZip();
         $city = $this->user->getCity();
-        $image = $this->user->getLogo();
+        $logo = $this->user->getLogo();
+        $logo = "../img/users/" . $logo;
         $email = $this->user->getEmail();
         $phone = $this->user->getPhone();
         //$timecreate = $this->user->getTimeCreate()->format("d-m-Y H:i:s");
@@ -46,7 +47,7 @@ class userView {
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-4 col-lg-4 " align="center"> <img alt="Hier k�nnte ihr Logo zu sehen sein" src= $image class="img"> </div>
+                <div class="col-md-4 col-lg-4 " align="center"> <img width="300"  alt="Hier könnte ihr Logo zu sehen sein" src= $logo class="img"> </div>
                 <div class=" col-md-8 col-lg-8 "> 
                   <table class="table table-user-information">
                     <tbody>
@@ -76,10 +77,12 @@ class userView {
               </div>
             </div>
                  <div class="panel-footer">
-                            <p>Ändern: </p>
+                            <strong><p>Ändern: </p></strong>
                             <button class='btn-xs btn-info' type='submit' value='C' name='editUser'>Personalien <i class="glyphicon glyphicon-edit"></i></button>
                             <button class='btn-xs btn-info' type='submit' value='E' name='editUser'>E-Mail <i class="glyphicon glyphicon-envelope"></i></button>
-                            <button class='btn-xs btn-info' type='submit' value='P' name='editUser'>Passwort <i class="glyphicon glyphicon-wrench"></i></button>                  
+                            <button class='btn-xs btn-info' type='submit' value='P' name='editUser'>Passwort <i class="glyphicon glyphicon-wrench"></i></button>    
+                            <button class='btn-xs btn-info' type='submit' value='A' name='editUser'>Logo <i class="glyphicon glyphicon-picture"></i></button>
+                            <button class='btn-xs btn-danger' type='submit' value='D' name='editUser'>Konto löschen <i class="glyphicon glyphicon-trash"></i></button>
    </div>
    </span>
                     </div>
