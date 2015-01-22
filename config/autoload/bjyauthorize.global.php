@@ -14,7 +14,7 @@ return array(
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    'Backend' => 'zfcuser_entity', 
+                    'Backend' => 'zfcuser_entity',
                 ),
             ),
         ),
