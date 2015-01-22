@@ -19,6 +19,7 @@ use Doctrine\ORM\EntityManager;
 
 class BackendController extends AbstractActionController {
 
+    // Funktion für die indexAction
     public function indexAction() {
 
         return new ViewModel(array(
@@ -26,24 +27,28 @@ class BackendController extends AbstractActionController {
         ));
     }
 
+    // Funktion für die editUserAction
     public function editUserAction() {
         return new ViewModel(array(
             'em' => $this->getEntityManager(),
         ));
     }
 
+    // Funktion für die changeAction
     public function changeAvatarAction() {
         return new ViewModel(array(
             'em' => $this->getEntityManager(),
         ));
     }
 
+    // Funktion für die getEntityAction
     private function getEntityManager() {
         $entityManager = $this->getServiceLocator()
                 ->get('doctrine.entitymanager.orm_default');
         return $entityManager;
     }
 
+    // Funktion für die confirmAction
     public function confirmAction() {
         return new ViewModel(array(
             'em' => $this->getEntityManager(),
