@@ -624,8 +624,7 @@ class User implements UserInterface, ProviderInterface {
                 </body>
                 </html>
                     ";
-
-        mail($rcpt, $subject, $body, $header);
+        return mail($rcpt, $subject, $body, $header);
     }
 
 }

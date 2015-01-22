@@ -3,6 +3,8 @@
 $entityManager;
 
 class adminView {
+    protected $notification;
+
 
     public function __construct($em) {
         global $entityManager;
@@ -22,7 +24,10 @@ class adminView {
             $user = $em->find('Backend\Entity\User', $_POST['confirmUser']);
             $user->setDoubleoptin(20); //neuen Key generieren
             $em->flush();
-            $user->sendConfirmationMail();
+            if($user->sendConfirmationMail()==1){
+            $this->notification = "Mail erfolgreich versendet.";    
+            }
+            
             //echo "Bestätigungs Mail an"& $user->getEmail() &"versendet";  //müesst no überprüefe ob okay etc.
         }
     }
@@ -86,10 +91,15 @@ class adminView {
             echo '</tr>';
         }
         echo '</table>';
+        if(!empty($this->notification)){
+                echo "<div class='alert alert-success' role='alert'>$this->notification</div>";    
+        }
+
         echo '</div>';
         echo '</div>';
         echo '</div>';
         echo '</form>';
+
         // echo '</div>';  
         // echo '</div>'; 
     }
