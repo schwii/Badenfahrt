@@ -56,7 +56,7 @@ if (isset($_POST["submit"])) {
         
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $logopath  . $randomvalue . "." . $imageFileType)) {
             echo "Das Bild " . basename($_FILES["fileToUpload"]["name"]) . " wurde hochgeladen.<br>";
-            echo "<a href=''>...zum Userbereich<a>";
+            echo "<a href='/Backend'>...zum Userbereich<a>";
             
             $user = $em->find('Backend\Entity\User', $this->zfcUserIdentity()->getId());
             $oldlogo = $user->getLogo();
