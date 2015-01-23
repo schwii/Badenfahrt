@@ -27,9 +27,9 @@ class userView {
         $logo = "../img/users/" . $logo;
         $email = $this->user->getEmail();
         $phone = $this->user->getPhone();
-        //$timecreate = $this->user->getTimeCreate()->format("d-m-Y H:i:s");
+        $timecreate = $this->user->getTimeCreate()->format("d.m.Y H:i:s");
         //$timecreate = date("d-m-Y H:i:s", strtotime($this->user->getTimeCreate()));
-        $timecreate = 'hüt';
+//        $timecreate = 'hüt';
 
 
         echo <<<FORM
