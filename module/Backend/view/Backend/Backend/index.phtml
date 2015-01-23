@@ -43,7 +43,7 @@ if (!empty($_POST['editUser'])) {  //mit switch-case lösen!!!!!
             $user->setPassword( $bcrypt->create($_POST['password']));
 }    
     $em->flush();
-    echo "mhhh so lässig";
+    echo "Daten wurden erfolgreich geändert. Bitte begeben Sie sich wieder in den Userbereich und überprüfen sie die Angaben";
 } elseif(!empty($_POST['changeAvatar']) && $_POST['changeAvatar'] == 'A'){
     
 }

@@ -36,19 +36,21 @@ class userView {
        <form class="form-horizontal" method="post">
  <div class="containert">
       <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">    
+      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-7 col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 toppad">    
    <br>
-<p class=" text-info">Benutzer seit:$timecreate</p>
+<p class=" text-info">Benutzer seit: $timecreate</p>
       </div>
-        <div class="col-xs-10 col-sm-10 col-md-8 col-lg-10 col-xs-offset-6 col-sm-offset-6 col-md-offset-0 col-lg-offset-0 toppad">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-7 col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-2 toppad">
           <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title"><p>$surname $lastname</p></h3>
             </div>
             <div class="panel-body">
+                <div class="table-responsive"> 
               <div class="row">
-                <div class="col-md-4 col-lg-4 " align="center"> <img width="300"  alt="Hier könnte ihr Logo zu sehen sein" src= $logo class="img"> </div>
-                <div class=" col-md-8 col-lg-8 "> 
+                <div class="col-xs-3 col-sm-3"  align="center"> <img width="450"  alt="Hier könnte ihr Logo zu sehen sein" src= $logo class="img-thumbnail" alt="Responsive image"> </div>
+                <div class=" col-xs-9 col-sm-9 pull-right"> 
+                    
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -73,6 +75,7 @@ class userView {
                       </tr>               
                     </tbody>
                   </table>
+                </div>
                 </div>
               </div>
             </div>

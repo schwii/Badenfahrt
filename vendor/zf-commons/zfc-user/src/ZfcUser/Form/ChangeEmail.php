@@ -26,7 +26,7 @@ class ChangeEmail extends ProvidesEventsForm
         $this->add(array(
             'name' => 'newIdentity',
             'options' => array(
-                'label' => 'New Email',
+                'label' => 'Neue Email Adresse',
             ),
             'attributes' => array(
                 'type' => 'text',
@@ -36,7 +36,7 @@ class ChangeEmail extends ProvidesEventsForm
         $this->add(array(
             'name' => 'newIdentityVerify',
             'options' => array(
-                'label' => 'Verify New Email',
+                'label' => 'E-Mail Adresse bestätigen',
             ),
             'attributes' => array(
                 'type' => 'text',
@@ -46,7 +46,7 @@ class ChangeEmail extends ProvidesEventsForm
         $this->add(array(
             'name' => 'credential',
             'options' => array(
-                'label' => 'Password',
+                'label' => 'Passwort',
             ),
             'attributes' => array(
                 'type' => 'password',
