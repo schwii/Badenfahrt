@@ -120,6 +120,16 @@ return array(
                             ),
                         ),
                     ),
+                       'forgotpassword' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/forgotpassword',
+                            'defaults' => array(
+                                'controller' => 'zfcuser',
+                                'action' => 'forgotpassword',
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),

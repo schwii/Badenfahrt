@@ -41,4 +41,5 @@ echo $this->form()->closeTag() ?>
  
 <?php if ($this->enableRegistration) : ?>
 <?php echo $this->translate('Noch nicht registriert?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Jetzt registrieren!'); ?></a>
-<?php endif; ?>
+<br><a href="/user/forgotpassword">Passwort vergessen? IDIOT!</a>
+    <?php endif; ?>
