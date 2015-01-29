@@ -141,6 +141,13 @@ class User implements UserInterface, ProviderInterface {
      * @ORM\Column(type="string", length=20, nullable=true)
      */
     protected $doubleoptin;
+    
+    
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    protected $forgotpwtoken;
+    
 
     /**
      * Initialies the roles variable.
@@ -578,17 +585,7 @@ class User implements UserInterface, ProviderInterface {
      * @return User
      */
     public function setDoubleoptin($charcount) {
-        mt_srand((double) microtime() * 1000000);
-        $set = "ABCDEFGHIKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
-        $doubleoptin = "";
-
-        for ($i = 1; $i <= $charcount; $i++) {
-            $doubleoptin .= $set[mt_rand(0, (strlen($set) - 1))];
-        }
-
-        $this->doubleoptin = $doubleoptin;
-
-        return $this;
+        $this->doubleoptin = $this->generateToken($charcount);
     }
 
     /**
@@ -600,6 +597,9 @@ class User implements UserInterface, ProviderInterface {
         return $this->doubleoptin;
     }
 
+    
+    
+    //Die beiden Mail Funktionen könnte man noch zusammenführen und lediglich den Body 
     public function sendConfirmationMail() {
 
         $header = "MIME-Version: 1.0\r\n";
@@ -626,5 +626,75 @@ class User implements UserInterface, ProviderInterface {
                     ";
         return mail($rcpt, $subject, $body, $header);
     }
+    
+    
+    
+    public function sendForgotPasswordMail() {
+        $header = "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html; charset=iso-8859-1\r\n";
+        $header .= "From: noreply@badenfahrt2017.ch\r\n";
+        //$header .= "Reply-To: noreply@badenfahrt2017.ch\r\n";
+        $header .= "X-Mailer: PHP " . phpversion();
+        $rcpt = $this->getEmail();
+        $subject = "Benutzerportal Badenfahrt 2017 - Passwort Zurücksetzen";
 
+        //$body  = file_get_contents('ergend e hmtl vorlag');
+        $link = "http://badenfahrt.local/user/resetpassword?pwtoken=" . $this->getForgotpwtoken();
+
+        $body = "<html>
+                <head>
+                    <title>Willkommen bei der Badenfahrt 2017</title>
+                </head>
+                    <p><a href=$link>Hier</a> können Sie Ihr neues Passwort setzen.</p>
+                    <p>und so wiiter</p>
+                <body>
+  
+                </body>
+                </html>
+                    ";
+        return mail($rcpt, $subject, $body, $header);
+    }
+    
+    
+
+
+    /**
+     * Set forgotpwtoken
+     *
+     * @param string $forgotpwtoken
+     * @return User
+     */
+    public function setForgotpwtoken($charcount)
+    {
+        
+        $this->forgotpwtoken = $this->generateToken($charcount);
+
+        return $this;
+    }
+
+    /**
+     * Get forgotpwtoken
+     *
+     * @return string 
+     */
+    public function getForgotpwtoken()
+    {
+        return $this->forgotpwtoken;
+    }
+    
+    
+    private function generateToken($charcount){
+        mt_srand((double) microtime() * 1000000);
+        $set = "ABCDEFGHIKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
+        $token = "";
+
+        for ($i = 1; $i <= $charcount; $i++) {
+            $token .= $set[mt_rand(0, (strlen($set) - 1))];
+        }
+
+
+        return $token;
+    }
+    
+    
 }

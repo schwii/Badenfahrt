@@ -130,6 +130,16 @@ return array(
                             ),
                         ),
                     ),
+                        'resetpassword' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/resetpassword',
+                            'defaults' => array(
+                                'controller' => 'zfcuser',
+                                'action' => 'resetpassword',
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),

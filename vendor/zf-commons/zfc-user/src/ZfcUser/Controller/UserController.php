@@ -349,6 +349,17 @@ class UserController extends AbstractActionController
         
     }
     
+        public function resetpasswordAction(){
+               
+        $entityManager = $this->getServiceLocator()
+                ->get('doctrine.entitymanager.orm_default');
+        
+        return new ViewModel(array(
+            'em' => $entityManager,
+        ));
+        
+    }
+    
     
     
     
