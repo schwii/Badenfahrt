@@ -36,6 +36,7 @@ if (!empty($_POST['editUser'])) {  //mit switch-case lösen!!!!!
     $user->setZip($_POST['zip']);
     $user->setCity($_POST['city']);
     $user->setPhone($_POST['phone']);
+    $user->setContactSex($_POST['sex']);
         if(!empty($_POST['password'])){
             include_once('vendor\zendframework\zendframework\library\Zend\Crypt\Password\bcrypt.php'); 
             $bcrypt = new Zend\Crypt\Password\Bcrypt();

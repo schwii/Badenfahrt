@@ -22,6 +22,30 @@ class editUserView {
         $image = $user->getLogo();
         $sex = $user->getContactSex();
         $phone = $user->getPhone();
+        
+        $sel1 = "";
+        $sel2 = "";
+        $sel3 = "";
+        
+        //Anhand Zahl die Option zur Geschlechtswahl selektieren
+        //vermutlich nicht gerade die eleganteste Art :/
+        //1=Männlich 2=Weiblich 3=Firma
+        //Für Korrespondenz!
+        switch ($sex){
+                case 1:
+                    $sel1 = "selected";
+                    break;
+                
+                case 2:
+                    $sel2 = "selected";
+                    break;
+                
+                case 3:
+                    $sel3 = "selected";
+                    break;
+    
+        }
+        
         //$password = $user->getPassword();
 
 
@@ -40,6 +64,7 @@ class editUserView {
         
         
         echo <<<FORM
+        
 <div class="container">
     <h1>Profil bearbeiten</h1>
   	<hr>
@@ -65,10 +90,10 @@ class editUserView {
             <label class="col-lg-3 control-label">Geschlecht:</label>
             <div class="col-lg-8">
               <div class="ui-select">
-                <select name="gender" id="gender" class="form-control">
-                  <option {$sex}>Männlich</option>
-                  <option {$sex}>Weiblich</option>
-                  <option {$sex}>Firma</option>
+                <select name="sex" id="sex" class="form-control">
+                  <option value="1" {$sel1}>Männlich</option>
+                  <option value="2" {$sel2}>Weiblich</option>
+                  <option value="3" {$sel3}>Firma</option>
                 </select>
               </div>
             </div>
@@ -91,7 +116,7 @@ class editUserView {
           <div class="form-group">
             <label class="col-lg-3 control-label">Nr:</label>
             <div class="col-lg-8">
-              <input name="streetNr" class="form-control" type="text" required value=$streetNr >
+              <input name="streetNr" class="form-control" type="text" required value='$streetNr' >
             </div>
           </div>
               
@@ -112,7 +137,7 @@ class editUserView {
              <div class="form-group">
             <label class="col-lg-3 control-label">Telefon:</label>
             <div class="col-lg-8">
-              <input name="phone" class="form-control" type="text" required value=$phone >
+              <input name="phone" class="form-control" type="text" required value='$phone' >
             </div>
           </div>   
          

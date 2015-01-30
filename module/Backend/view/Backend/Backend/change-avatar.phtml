@@ -2,10 +2,12 @@
 
 echo <<<FORM
     <form action="changeAvatar" method="post" enctype="multipart/form-data">
-    Bild auswählen:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-    </form>    
+        <p><img src="../img/avatarupload.png" alt="Logo"></p> 
+        <strong><p>Bild auswählen:</p></strong>
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <br>
+        <input type="submit" value="Bild hochladen" name="submit" class="btn btn-info">
+    </form>   
 FORM;
 
 
@@ -23,25 +25,26 @@ if (isset($_POST["submit"])) {
         $uploadOk = 0;
     }
 
-// Check if file already exists
+    //Überprüfen ob File bereits vorhanden - eher unwahrscheinlich
     if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
+        echo "Bitte versuchen Sie es noch einmal.";
         $uploadOk = 0;
     }
-// Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
-        echo "Ihr Bild ist leider zu gross. Bitte verkleinern Sie es und versuchen es nochmals.";
+// Filegrösse überprüfen
+    if ($_FILES["fileToUpload"]["size"] > 1000000) {
+        echo "<p>Ihr Bild ist leider zu gross. Bitte verkleinern Sie es und versuchen es nochmals.<p><br>";
+        echo "<p>Maximal 1 MB.<p><br>";
         $uploadOk = 0;
     }
-// Allow certain file formats
+// Auf Format prüfen
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
         echo "Sorry, nur JPG, JPEG, PNG & GIF Dateien sind erlaubt.";
         $uploadOk = 0;
     }
-// Check if $uploadOk is set to 0 by an error
+// Wurden alle Bedingungen erfüllt
     if ($uploadOk == 0) {
         echo "Sorry, Ihr Bild wurde nicht hochgeladen.";
-// if everything is ok, try to upload file
+
     } else {
         
                 mt_srand((double) microtime() * 1000000);
@@ -54,14 +57,18 @@ if (isset($_POST["submit"])) {
         
         $logopath ="./public/img/users/";
         
+        //Versuchen Hochzuladen.
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $logopath  . $randomvalue . "." . $imageFileType)) {
             echo "Das Bild " . basename($_FILES["fileToUpload"]["name"]) . " wurde hochgeladen.<br>";
             echo "<a href='/Backend'>...zum Userbereich<a>";
             
+            //Filename bei User hinterlegen
             $user = $em->find('Backend\Entity\User', $this->zfcUserIdentity()->getId());
             $oldlogo = $user->getLogo();
             $user->setLogo($randomvalue . "." . $imageFileType);
             $em->flush();
+            
+            //allfälliges altes Logo löschen
             if(!empty($oldlogo)){
                        unlink($logopath . $oldlogo);     
             }
