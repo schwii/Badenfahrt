@@ -9,14 +9,12 @@ echo <<<FORM
 FORM;
 
 if (isset($_POST["submit"])) {
-    if($_POST["submit"]=="D"){
-         $user = $em->find('Backend\Entity\User', $this->zfcUserIdentity()->getId());
-         $user->setState(9);
-         $em->flush();
-         echo'<meta http-equiv="refresh" content="0; url=../user/logout" />';
-    }
-    else{
+    if ($_POST["submit"] == "D") {
+        $user = $em->find('Backend\Entity\User', $this->zfcUserIdentity()->getId());
+        $user->setState(9);
+        $em->flush();
+        echo'<meta http-equiv="refresh" content="0; url=../user/logout" />';
+    } else {
         echo'<meta http-equiv="refresh" content="0; url=../Backend/index" />';
     }
-    
 }

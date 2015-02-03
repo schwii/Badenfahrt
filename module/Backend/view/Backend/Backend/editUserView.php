@@ -3,7 +3,7 @@
 class editUserView {
 
     protected $admin;
-    
+
     public function editUser($entityManager, $userID) {
 
         $user = $entityManager->find('Backend\Entity\User', $userID);
@@ -22,47 +22,40 @@ class editUserView {
         $image = $user->getLogo();
         $sex = $user->getContactSex();
         $phone = $user->getPhone();
-        
+
         $sel1 = "";
         $sel2 = "";
         $sel3 = "";
-        
+
         //Anhand Zahl die Option zur Geschlechtswahl selektieren
         //vermutlich nicht gerade die eleganteste Art :/
         //1=Männlich 2=Weiblich 3=Firma
         //Für Korrespondenz!
-        switch ($sex){
-                case 1:
-                    $sel1 = "selected";
-                    break;
-                
-                case 2:
-                    $sel2 = "selected";
-                    break;
-                
-                case 3:
-                    $sel3 = "selected";
-                    break;
-    
+        switch ($sex) {
+            case 1:
+                $sel1 = "selected";
+                break;
+
+            case 2:
+                $sel2 = "selected";
+                break;
+
+            case 3:
+                $sel3 = "selected";
+                break;
         }
-        
-        //$password = $user->getPassword();
-
-
-        
-        if($this->admin){
-            $passwordInput =  '        <div class="form-group">
+        if ($this->admin) {
+            $passwordInput = '        <div class="form-group">
             <label class="col-lg-3 control-label">Passwort:</label>
             <div class="col-lg-8">
               <input name="password" class="form-control" type="text">
             </div>
           </div>';
-        }
-        else{
+        } else {
             $passwordInput = "";
         }
-        
-        
+
+
         echo <<<FORM
         
 <div class="container">
@@ -159,12 +152,9 @@ class editUserView {
  
 FORM;
     }
-    public function setAdmin(){
+
+    public function setAdmin() {
         $this->admin = true;
     }
 
-//include_once('vendor\zendframework\zendframework\library\Zend\Crypt\Password\bcrypt.php'); 
-//$bcrypt = new Zend\Crypt\Password\Bcrypt();
-//$bcrypt->setCost(14);
-//echo $bcrypt->create($password);
 }

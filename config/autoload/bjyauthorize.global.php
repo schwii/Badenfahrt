@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Globlaes Konfigurationsfiles für bjauthorize
+ * Globlaes Konfigurationsfile für bjauthorize
  */
 
 return array(
