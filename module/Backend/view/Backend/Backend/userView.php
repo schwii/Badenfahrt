@@ -28,9 +28,6 @@ class userView {
         $email = $this->user->getEmail();
         $phone = $this->user->getPhone();
         $timecreate = $this->user->getTimeCreate()->format("d.m.Y H:i:s");
-        //$timecreate = date("d-m-Y H:i:s", strtotime($this->user->getTimeCreate()));
-//        $timecreate = 'hüt';
-
 
         echo <<<FORM
        <form class="form-horizontal" method="post">
